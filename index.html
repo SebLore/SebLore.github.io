@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebGL Sorting Visualization</title>
+    <style>
+        canvas {
+            display: block;
+            margin: auto;
+            background: #eee;
+        }
+        button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="glCanvas" width="800" height="400"></canvas>
+    <button onclick="bubbleSort()">Start Bubble Sort</button>
+    <script>
+        const canvas = document.getElementById("glCanvas");
+        const gl = canvas.getContext("webgl");
+
+        if (!gl) {
+            alert("WebGL not supported!");
+        }
+
+        const n = 20; // Number of bars
+        const maxHeight = 1.0;
+        let bars = [];
+
+        // Generate bars with unique heights
+        for (let i = 0; i < n; i++) {
+            bars.push({ height: (maxHeight / n) * (i + 1), index: i });
+        }
+
+        // Shuffle bars using Fisher-Yates shuffle
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+        shuffle(bars);
+
+        // WebGL setup to draw bars
+        function drawBars() {
+            gl.clear(gl.COLOR_BUFFER_BIT);
+            bars.forEach((bar, i) => {
+                let x = (i / n) * 2 - 1;
+                let height = bar.height;
+                // Draw using WebGL (Placeholder - Implement shaders & buffer logic)
+            });
+        }
+
+        drawBars();
+
+        // Bubble Sort Animation
+        async function bubbleSort() {
+            let swapped;
+            do {
+                swapped = false;
+                for (let i = 0; i < bars.length - 1; i++) {
+                    if (bars[i].height > bars[i + 1].height) {
+                        [bars[i], bars[i + 1]] = [bars[i + 1], bars[i]];
+                        swapped = true;
+                        drawBars();
+                        await new Promise(resolve => setTimeout(resolve, 100)); // Animation delay
+                    }
+                }
+            } while (swapped);
+        }
+    </script>
+</body>
+</html>
