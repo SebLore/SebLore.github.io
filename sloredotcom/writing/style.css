@@ -1,0 +1,225 @@
+:root {
+    --background-color: rgb(17, 16, 16);
+    --main-font-color-light: white;
+    --box-color: black;
+}
+
+/* make section and body a centered strip rather than taking up the whole page */
+section,
+body {
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--main-font-color-light);
+    font-style: inherit;
+    font-weight: inherit;
+    background-color: var(--background-color);
+    margin: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+p {
+    font-size: 1rem;
+}
+
+.chapter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    margin: 1em;
+    border-radius: 5px;
+    background-color: var(--box-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* confirmation box so the user can consent to the sounds what are playing */
+.confirm-box {
+    display: flex;
+    position: fixed;
+    top: 20%;
+    left: 25%;
+    height: fit-content;
+    width: fit-content;
+    margin: 0;
+    color: white;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(65, 64, 64);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 1000;
+}
+
+.confirm-box h1,
+.confirm-box h3 {
+    align-self: auto;
+    margin: 10px 0;
+}
+
+.confirm-box h1 {
+    font-size: 3rem;
+}
+
+.confirm-box h3 {
+    font-size: 1.5rem;
+    flex: none;
+}
+
+.confirm-box .buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirm-box a {
+    font-size: 16px;
+    margin: 10px;
+    padding: 10px 20px;
+    border: 1px outset buttonborder;
+    border-radius: 5px;
+    color: black;
+    background-color: grey;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.confirm-box a:hover {
+    background-color: black;
+    color: white;
+    text-decoration: none;
+}
+
+.content {
+    display: none;
+    flex: stretch;
+    margin: 20px;
+}
+
+.typewriter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    size: fixed;
+}
+
+.typewriter {
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    padding: 1em;
+    max-height: 20%;
+    max-width: 60%;
+    flex-wrap: wrap;
+    justify-content: left;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: var(--background-color);
+    color: white;
+    font-style: inherit;
+    font-weight: inherit;
+}
+
+.typewriter h2,
+.typewriter p {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 1px solid;
+    overflow-y: hidden;
+    animation:
+        typing 5s steps(40) forwards,
+        blink-caret 1s step-end infinite;
+}
+
+.typewriter h2 {
+    border-right: 0;
+}
+
+#cursor {
+    display: inline;
+    width: 2px;
+    height: 1em;
+    background-color: none;
+    margin-left: 2px;
+    border: none;
+    border-left: 1px solid white;
+    padding: 0;
+    /* animation: blink 1.2s infinite; */
+}
+
+/* animations */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* The blinking effect */
+@keyframes blink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes heart-blink {
+
+    0%,
+    25%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    75%,
+    100% {
+        opacity: 0;
+    }
+}
+
+/* The typing effect */
+@keyframes typing {
+    from {
+        width: 0
+    }
+
+    to {
+        width: 100%
+    }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: rgb(253, 212, 134)
+    }
+}

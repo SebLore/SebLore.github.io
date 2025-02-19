@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebGL Sorting Visualization</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="navitem">
+            <a href="">
+                <div class="logo">
+                    <img src="../../images/logo.png" alt="logo">
+                </div>
+            </a>
+        </div>
+        <div class="navitem">
+            <h1>sloredotcom</h1>
+        </div>
+        <div class="navitem">
+            <ul>
+                <li><a href="../../">Home</a></li>
+                <li><a href="../../">About</a></li>
+                <li><a href="../bars">Code</a></li>
+                <li><a href="../writing">Writing</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-container">
+        <div class="left">
+            <details>
+                <summary>What is bubble sort</summary>
+                <p>Bubble sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent
+                    elements and swaps them if they are in the wrong order. The pass through the list is repeated until
+                    the list is sorted.</p>
+            </details>
+        </div>
+        <div class="middle">
+            <h1>Bubble Sort</h1>
+            <canvas id="glCanvas" width="600" height="400"></canvas>
+        </div>
+        <div class="right">
+            <div class="controls">
+                <div class="buttons">
+                    <button onclick="bubbleSort()">Start</button>
+                    <button id="stopButton">Stop</button>
+                    <button id="shuffleButton">Shuffle Bars</button>
+                </div>
+                <div>
+                    <input type="number" id="barCountInput" value="50" min="10" max="2000" step="10">
+                    <button id="setBarCountButton">Set Bar Count</button>
+                </div>
+                <div class="slider">
+                    <label>Speed:</label>
+                    <input type="range" min="100" max="500" value="400" id="speedControl">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script id="vertex-shader" type="x-shader/x-vertex" data-shader-path="./glsl/vertexShader.glsl"></script>
+<script id="fragment-shader" type="x-shader/x-fragment" data-shader-path="./glsl/fragmentShader.glsl"></script>
+<script src="main.js"></script>
+
+</html>
