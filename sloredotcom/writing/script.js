@@ -1,4 +1,6 @@
-
+/**
+ * This script handles user interaction with the index page
+ */
 
 // Wait for the HTML to parse before executing the script
 document.addEventListener("DOMContentLoaded", () => {

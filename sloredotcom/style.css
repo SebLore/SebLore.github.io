@@ -41,12 +41,15 @@
 
     /* sizes */
     --main-max-width: clamp(1200px, 100%, 1400px);
-    --main-font-size: 24px;
+    --main-font-size: 1.5rem;
+    --main-line-height: 1.7;
+    --main-font-weight: 400;
+
 }
 
 /* if user prefers dark mode */
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
     :root {
         /* background colors */
         --main-bg-color: #333;
@@ -105,10 +108,15 @@ textarea {
     background-color: var(--main-bg-color);
 }
 
+h1 {
+    font-size: 2.5rem;
+}
+
 /* established types and classes */
 body {
     color: var(--main-font-color);
     min-height: 100%;
+    height: 100vh;
     margin: 0;
     padding: 0;
     font-size: 1.5rem;
@@ -123,6 +131,12 @@ a {
 
 a:hover {
     color: var(--main-link-hover-color);
+}
+
+p {
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
 }
 
 dl,
@@ -151,20 +165,27 @@ button:hover {
 }
 
 details {
+    position: relative;
     background-color: var(--main-bg-color);
     color: var(--main-font-color);
     padding: 1em;
-    margin: 0 20px;
-    width: 100%;
-    border: 1px solid var(--main-high-light-color);
+    border: 2px solid var(--main-high-light-color);
     border-radius: 10px;
     box-shadow: 10px rgba(0, 0, 0, 0.1);
-    max-width: 90%;
 }
 
 details:hover {
     background-color: var(--main-high-light-color);
 }
+
+details[open] div {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+
+}
+
 
 details summary {
     font-weight: bold;
@@ -177,10 +198,12 @@ details p {
 }
 
 canvas {
-    display: block;
+    display: flex;
     margin: 0 auto;
     border: solid 8px rgb(128, 128, 128);
     border-style: ridge;
+    max-width: 600px;
+    max-height: 400px;
 }
 
 /* custom types and classes */
@@ -189,69 +212,67 @@ canvas {
 * generic flexbox container
  */
 
-.main-container {
-    display: flex;
-    height: 100%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: var(--main-max-width);
-    margin: auto;
-    overflow: hidden;
-}
-
 .container {
     display: flex;
     flex-direction: row;
     flex-wrap: inherit;
     justify-content: space-between;
-    align-items: center;
+    align-items: stretch;
     max-width: var(--main-max-width);
     margin: auto;
-    margin-right: auto;
-    margin-left: auto;
     overflow: hidden;
     width: 100%;
     padding-right: 0.75rem;
     padding-left: 0.75rem;
 }
 
+
 /* left side of the page */
 .container .left,
 .container .right {
-    display: flex;
     flex: 1;
+    display: flex;
     flex-direction: column;
-    align-items: baseline;
-    justify-content: baseline;
+    justify-content: center;
+    margin-top: 3rem;
     background-color: inherit;
-    padding: 20px;
-    height: 100vh;
+}
+
+
+.container .right {
+    margin-left: 0;
+    margin-right: 20px;
+    justify-content: left;
+}
+
+.container .right {
+    margin-right: 0;
+    margin-left: 20px;
 }
 
 .container .middle {
     display: flex;
-    flex: 2;
-    padding: 20px;
     flex-direction: column;
+    flex: 3;
+    padding: 20px;
+    margin-top: 3rem;
+
     background-color: inherit;
-    justify-content: baseline;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
 }
 
-/* .container .right details {
-    top: 0;
-} */
+
+.flex-centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .controls {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: stretch;
+    align-items: stretch;
     text-align: left;
-    margin: 10px;
 }
 
 .controls input[type=number] {
@@ -276,18 +297,17 @@ canvas {
 }
 
 .controls .slider {
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    margin: 10px;
 }
 
 .controls .slider label {
-    font-size: 1.5em;
+    font-size: 1rem;
     font-weight: bold;
-    align-self: center;
-}
-
-.controls input[type=range] {
-    top: 25%;
-    bottom: 25%;
     align-self: center;
 }
 
@@ -298,8 +318,6 @@ canvas {
     left: 0;
     z-index: 1030;
 }
-
-
 
 /* navbar */
 .navbar {
@@ -314,7 +332,7 @@ canvas {
     width: 100%;
     background: #12121b !important;
     color: white;
-    font-family:inherit;
+    font-family: inherit;
     text-decoration: none;
     z-index: 2;
     background-color: rgba(0, 0, 0, 0.3);
@@ -351,10 +369,10 @@ canvas {
 
 @media (min-width: 1200px) {
     .navbar-expand-xl .navbar-nav .nav-link {
-      padding-right: .5rem;
-      padding-left: .5rem;
+        padding-right: .5rem;
+        padding-left: .5rem;
     }
-  }
+}
 
 .navbar .container {
     display: flex;
@@ -363,26 +381,36 @@ canvas {
     justify-content: inherit;
 }
 
-.navbar .logo-container{
+.navbar .logo-container {
     display: flex;
     flex-direction: row;
     justify-content: left;
     align-items: center;
+
+}
+
+
+.navbar .logo-container h2 {
+    align-self: left;
+    margin: 0;
+    color: rgb(230, 230, 230);
+
+    &:hover {
+        cursor: pointer;
+        color: white;
+    }
 }
 
 .navbar a {
     color: var(--main-link-color);
     text-decoration: none !important;
     display: flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-.navbar .logo-container h2{
-    align-self: left;
-    margin:0;
-    color:rgb(250, 250, 250);
-}
+
+
 
 .nav-link {
     display: block;
@@ -403,38 +431,28 @@ canvas {
     margin-left: 1rem;
 }
 
-.navbar h1 {
-    font-family: inherit;
-    font-size: 3em;
-    color: white;
-    margin: 0;
-}
 
-.navbar .externals-container{
+.navbar .externals-container {
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
     justify-content: center;
 }
 
-.navbar .externals-container a{
-    color:white;
+.navbar .externals-container a {
+    color: white;
 }
 
-.navbar .externals-container .block-externals{
-    margin:0;
-    background-color:inherit;
+.navbar .externals-container .block-externals {
+    margin: 0;
+    background-color: inherit;
     min-width: 200px;
-    font-size:2rem;
-}
-
-.block-externals .external{
-    padding: 0.5rem;
     font-size: 2rem;
 }
 
-.fa-github {
-    content: "\f09b"; /* This is the Unicode for fa-github */
-  }
+.block-externals .external {
+    padding: 0.5rem;
+    font-size: 2rem;
+}
 
 .menuItems {
     z-index: 2;
@@ -479,6 +497,18 @@ canvas {
     transition: opacity 1s;
 }
 
+.textbox {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 1rem;
+    background-color: #2a2a2a;
+    /* border-radius: 5px; */
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1);
+    /* border: solid 4px black; */
+}
+
 .sidebar {
     background-color: var(--main-bg-color);
     color: var(--main-font-color);
@@ -515,7 +545,7 @@ canvas {
 }
 
 /* media specific changes */
-@media screen and (max-width: 1600px) {
+/* @media screen and (max-width: 1600px) {
     .navBar {
         grid-template-columns: [start] 1fr [logo-end] 1fr [menu-start] 1fr [menu-end];
     }
@@ -525,8 +555,14 @@ canvas {
     }
 }
 
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+}
+
 @media screen and (max-height: 1000px) {
     .navBar {
         display: grid;
     }
-}
+} */

@@ -1,3 +1,13 @@
+/*
+* Main JS file for the bars/index.html
+ */
+
+/**
+ * Initializes the WebGL context and draws the bars.
+ *  
+ * @returns {void}
+ */
+
 document.addEventListener("DOMContentLoaded", () => {
     // Set up WebGL
     const canvas = document.getElementById("glCanvas");
@@ -12,16 +22,12 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    let program; // Declare program globally
+    var program; // Declare program globally
     let n = 50; // Default number of bars
     var sorting = false;
     const minHeight = -0.9; // Minimum height of bars
     const maxHeight = 0.9; // Maximum height of bars
-    let speed = 500 - document.getElementById("speedControl").value; // Animation speed (initial value)
-    if (speed === undefined) {
-        console.log("Speed control not found. Using default speed.");
-        speed = 100;
-    }
+    let animSpeed = 500 - document.getElementById("speedControl").value;
 
     // Initialize bars array globally
     let bars = [];
@@ -143,7 +149,11 @@ document.addEventListener("DOMContentLoaded", () => {
         return { vertices: new Float32Array(vertices), colors: new Float32Array(colors), indices: new Uint16Array(indices) };
     }
 
-
+    /**
+     * Draws the bars on the canvas.
+     * 
+     * @returns {void}
+     */
     function drawBars() {
         gl.clearColor(0.0, 0.0, 0.0, 1.0);
         gl.clear(gl.COLOR_BUFFER_BIT);
@@ -184,12 +194,12 @@ document.addEventListener("DOMContentLoaded", () => {
             swapped = false;
             for (let i = 0; i < bars.length - 1; i++) {
                 // set the active bar to be a highlighted color
-                bars[i].color = [1.0, 0.0, 1.0, 1.0]; // orange
+                bars[i].color = [1.0, 0.0, 1.0, 1.0]; // magenta
                 if (bars[i].height > bars[i + 1].height) {
                     [bars[i], bars[i + 1]] = [bars[i + 1], bars[i]];
                     swapped = true;
                     drawBars();
-                    await new Promise(resolve => setTimeout(resolve, speed)); // Animation delay
+                    await new Promise(resolve => setTimeout(resolve, animSpeed)); // Animation delay
                 }
                 // reset the color at the end
                 bars[i].color = [0.3, 0.3, 0.3, 1.0]; //
@@ -198,6 +208,14 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             bars[bars.length - 1].color = [0.3, 0.3, 0.3, 1.0]; // reset the color at the end
         } while (swapped && sorting);
+        // when finished, go through the array again and set all colors to magenta,
+        // sequentially, then reset them all to gray
+        for (let i = 0; i < bars.length; i++) {
+            bars[i].color = [1.0, 0.0, 1.0, 1.0]; // magenta
+            drawBars();
+            await new Promise(resolve => setTimeout(resolve, animSpeed)); // Animation delay
+        }
+
         drawBars();
         console.log("Bubble Sort completed");
     };
@@ -231,7 +249,7 @@ document.addEventListener("DOMContentLoaded", () => {
     var speedControl = document.getElementById("speedControl");
     if (speedControl) {
         speedControl.addEventListener("input", (event) => {
-            speed = 500 - event.target.value; // Inverse relationship (higher value = faster)
+            animSpeed = 500 - event.target.value; // Inverse relationship (higher value = faster)
         });
     } else {
         console.log("Speed control not found.");
@@ -242,6 +260,8 @@ document.addEventListener("DOMContentLoaded", () => {
         shuffleButton.addEventListener("click", () => {
             sorting = false;
             shuffle(bars);
+            // make sure all bars are grey
+            bars.forEach(bar => bar.color = [0.3, 0.3, 0.3, 1.0]);
             drawBars();
         });
     } else {

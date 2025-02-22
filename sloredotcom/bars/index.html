@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebGL Sorting Visualization</title>
+    <title>sloredotcom | Code</title>
+    <link rel="icon" href="../../images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 </head>
 
@@ -15,13 +16,13 @@
         <div class="container">
             <div class="logo-container">
                 <a class=logo href="/">
-                    <img src="../../images/logo.png" alt="logo" style="max-width:50px"/>
+                    <img src="../../images/logo.png" alt="logo" style="max-width:50px" />
                 </a>
                 <a href="/">
                     <h2>sloredotcom</h2>
                 </a>
-            </div>  
-            
+            </div>
+
             <div id="navbarContent">
                 <div id="block-navigation">
                     <ul id="navItems" class="nav navbar-nav">
@@ -41,7 +42,7 @@
                 </div>
             </div>
             <div class="externals-container">
-                <div class="block-externals" >
+                <div class="block-externals">
                     <ul id="externals" class="nav navbar-nav">
                         <li class="navitem">
                             <a class="nav-link" href="https://github.com/SebLore">
@@ -53,40 +54,55 @@
             </div>
         </div>
     </nav>
-    <div class="main-container">
-        <div class="left">
-            <details>
-                <summary>What is bubble sort</summary>
-                <p>Bubble sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent
-                    elements and swaps them if they are in the wrong order. The pass through the list is repeated until
-                    the list is sorted.</p>
-            </details>
-        </div>
-        <div class="middle">
-            <h1>Bubble Sort</h1>
-            <canvas id="glCanvas" width="600" height="400"></canvas>
-        </div>
-        <div class="right">
-            <div class="controls">
-                <div class="buttons">
-                    <button onclick="bubbleSort()">Start</button>
-                    <button id="stopButton">Stop</button>
-                    <button id="shuffleButton">Shuffle Bars</button>
+    <section>
+        <div class="container" style="height: 100vh; width: 100%; margin: 0;">
+            <div class="left">
+                <h1 id="sortAlg">Bubble Sort</h1>
+                <details>
+                    <summary>What is bubble sort</summary>
+                    <p>Bubble sort is a simple sorting algorithm that checks two values against each other and swaps
+                        their
+                        positions in the array if the first is larger than the second. It functions by picking the first
+                        element in an array, then iterating across the array until it finds an element that is bigger
+                        than
+                        it, at which point that element will be replace the starting element for this iteration.</p>
+                </details>
+            </div>
+            <div class="middle">
+                <canvas id="glCanvas" width="600" height="400"></canvas>
+                <div class="textbox">
+                    <p>This program is heavily inspired by the work of
+                        <a href="https://panthema.net/about/">Timo Bingmann</a>, specifically the project <a
+                            href="https://panthema.net/2013/sound-of-sorting/">"The Sound of Sorting"</a></a>.
+                        I wanted to do my own implementation, partially as practice in JavaScript, partially to have
+                        something
+                        to
+                        put on my website.
+                    </p>
                 </div>
-                <div>
-                    <input type="number" id="barCountInput" value="50" min="10" max="2000" step="10">
-                    <button id="setBarCountButton">Set Bar Count</button>
-                </div>
-                <div class="slider">
-                    <label>Speed:</label>
-                    <input type="range" min="100" max="500" value="400" id="speedControl">
+            </div>
+
+            <div class="right">
+                <div class="controls">
+                    <div class="buttons" style="flex-direction: rows; flex-wrap: nowrap;">
+                        <button id="startButton" onclick="bubbleSort()">Start</button>
+                        <button id="stopButton">Stop</button>
+                    </div>
+                    <div>
+                        <button id="shuffleButton">Shuffle Bars</button>
+                    </div>
+                    <div>
+                        <input type="number" id="barCountInput" value="50" min="10" max="2000" step="10">
+                        <button id="setBarCountButton">Set Bar Count</button>
+                    </div>
+                    <div class="slider">
+                        <label>Speed</label>
+                        <input type="range" min="100" max="500" value="400" id="speedControl">
+                    </div>
                 </div>
             </div>
         </div>
-        <p style="justify-content: center">This program is heavily inspired by the work of <a href="https://panthema.net/about/">Timo Bingmann</a><a href="https://panthema.net/2013/sound-of-sorting/>"The Sound of Sorting"</a></a> where he visualizes different sorting algorithms.
-            I wanted to do my own implementation, partially as practice in JavaScript, partially to have something to put on my website.</p>
-    </div>
-    
+    </section>
 </body>
 <script id="vertex-shader" type="x-shader/x-vertex" data-shader-path="./glsl/vertexShader.glsl"></script>
 <script id="fragment-shader" type="x-shader/x-fragment" data-shader-path="./glsl/fragmentShader.glsl"></script>
