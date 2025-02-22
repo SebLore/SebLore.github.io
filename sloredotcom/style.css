@@ -7,7 +7,7 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 /*
@@ -16,8 +16,8 @@
 */
 
 :root {
-    /* custom properties*/
-    /* FONTS */
+    scroll-behavior: smooth;
+    /*custom */
     --main-font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
     /* COLORS */
@@ -40,8 +40,8 @@
     --main-link-visited-hover-color: #0056b3;
 
     /* sizes */
-    --main-max-width: clamp(1200px, 90%, 1400px);
-    --main-font-size: 16px;
+    --main-max-width: clamp(1200px, 100%, 1400px);
+    --main-font-size: 24px;
 }
 
 /* if user prefers dark mode */
@@ -83,8 +83,8 @@
 
 html {
     /* box-sizing: border-box; */
-    scroll-behavior: smooth;
-    font-size: var(--main-font-size);
+
+    height: 100%;
     text-rendering: optimizeLegibility;
     -moz-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
@@ -108,11 +108,12 @@ textarea {
 /* established types and classes */
 body {
     color: var(--main-font-color);
+    min-height: 100%;
     margin: 0;
     padding: 0;
-    font-size: var(--main-font-size);
+    font-size: 1.5rem;
+    line-height: 1.7rem;
     font-weight: 400;
-    line-height: 1.5;
 }
 
 a {
@@ -124,7 +125,9 @@ a:hover {
     color: var(--main-link-hover-color);
 }
 
-dl, ol, ul {
+dl,
+ol,
+ul {
     margin-top: 0;
     margin-bottom: 1rem;
 }
@@ -205,13 +208,12 @@ canvas {
     align-items: center;
     max-width: var(--main-max-width);
     margin: auto;
+    margin-right: auto;
+    margin-left: auto;
     overflow: hidden;
-    margin-top: 20px;
     width: 100%;
     padding-right: 0.75rem;
     padding-left: 0.75rem;
-    margin-right: auto;
-    margin-left: auto;
 }
 
 /* left side of the page */
@@ -289,7 +291,7 @@ canvas {
     align-self: center;
 }
 
-.fixed-top{
+.fixed-top {
     position: fixed;
     top: 0;
     right: 0;
@@ -312,8 +314,7 @@ canvas {
     width: 100%;
     background: #12121b !important;
     color: white;
-    font-family: montserrat;
-    font-family: 'Courier New', Courier, monospace;
+    font-family:inherit;
     text-decoration: none;
     z-index: 2;
     background-color: rgba(0, 0, 0, 0.3);
@@ -324,44 +325,73 @@ canvas {
     margin-top: 0;
 }
 
-.navbar-nav{
+.nav {
     display: flex;
-    flex-direction:column;
-    padding-left:0;
-    margin-bottom:0;
-    list-style:none;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
 }
 
-@media(min-width: 1200px)
-{
-    .navbar-nav{
+
+.navbar-nav {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+@media(min-width: 1200px) {
+    .navbar-nav {
         flex-direction: row;
     }
 }
 
-.navbar .container{
+@media (min-width: 1200px) {
+    .navbar-expand-xl .navbar-nav .nav-link {
+      padding-right: .5rem;
+      padding-left: .5rem;
+    }
+  }
+
+.navbar .container {
     display: flex;
     flex-wrap: inherit;
     align-items: center;
-    justify-content: space-between;
+    justify-content: inherit;
 }
 
-.navbar a{
+.navbar .logo-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+}
+
+.navbar a {
     color: var(--main-link-color);
     text-decoration: none !important;
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+.navbar .logo-container h2{
+    align-self: left;
+    margin:0;
+    color:rgb(250, 250, 250);
+}
+
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
 }
 
 .navbar .navitem {
+    color: inherit;
     box-sizing: border-box;
-}
-
-.navbar .navitem li {
-    font-family: var(--main-font-family);
-    font-size: 24px;
-    list-style: none;
-    display: inline-flex;
-    padding: 0 0.5rem;
-    margin: 0;
     font-weight: 600;
 }
 
@@ -379,6 +409,32 @@ canvas {
     color: white;
     margin: 0;
 }
+
+.navbar .externals-container{
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+}
+
+.navbar .externals-container a{
+    color:white;
+}
+
+.navbar .externals-container .block-externals{
+    margin:0;
+    background-color:inherit;
+    min-width: 200px;
+    font-size:2rem;
+}
+
+.block-externals .external{
+    padding: 0.5rem;
+    font-size: 2rem;
+}
+
+.fa-github {
+    content: "\f09b"; /* This is the Unicode for fa-github */
+  }
 
 .menuItems {
     z-index: 2;
