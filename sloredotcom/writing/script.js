@@ -90,6 +90,12 @@ window.onload = function () {
     let text = document.getElementById("typedtext");
     const audio = document.getElementById("audioTyping");
 
+    // confirm that the elements aren't null
+    if (content === null || typewriter === null || text === null || audio === null) {
+        console.error("One or more elements are missing.");
+        return;
+    }
+
     // Show the confirmation box
     if (confirmBox !== null)
         confirmBox.style.display = "flex";
