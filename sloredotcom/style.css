@@ -1,9 +1,23 @@
-/* main style doc */
+/*
+*  Document
+*
+*   change from 'box-siting: content-box' so  'width' is not affected by padding or border
+*/
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/*
+*   Root
+*
+*/
 
 :root {
-    /* custom properties*/
-
-    /* FONTS */
+    scroll-behavior: smooth;
+    /*custom */
     --main-font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
     /* COLORS */
@@ -26,13 +40,13 @@
     --main-link-visited-hover-color: #0056b3;
 
     /* sizes */
-    --main-max-width: clamp(1200px, 90%, 1400px);
-    --main-font-size: 16px;
+    --main-max-width: clamp(1200px, 100%, 1400px);
+    --main-font-size: 24px;
 }
 
 /* if user prefers dark mode */
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
     :root {
         /* background colors */
         --main-bg-color: #333;
@@ -63,14 +77,14 @@
 /* phone or tablet */
 @media (max-width: 768px) {
     :root {
-        --main-max-width: 100%;
+        --main-max-width: 50%;
     }
 }
 
 html {
     /* box-sizing: border-box; */
-    scroll-behavior: smooth;
-    font-size: var(--main-font-size);
+
+    height: 100%;
     text-rendering: optimizeLegibility;
     -moz-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
@@ -94,11 +108,12 @@ textarea {
 /* established types and classes */
 body {
     color: var(--main-font-color);
+    min-height: 100%;
     margin: 0;
-    /* padding: 20px; */
-    font-size: var(--main-font-size);
+    padding: 0;
+    font-size: 1.5rem;
+    line-height: 1.7rem;
     font-weight: 400;
-    line-height: 1.5;
 }
 
 a {
@@ -108,6 +123,13 @@ a {
 
 a:hover {
     color: var(--main-link-hover-color);
+}
+
+dl,
+ol,
+ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
 }
 
 span {
@@ -133,7 +155,7 @@ details {
     color: var(--main-font-color);
     padding: 1em;
     margin: 0 20px;
-    width: 90%;
+    width: 100%;
     border: 1px solid var(--main-high-light-color);
     border-radius: 10px;
     box-shadow: 10px rgba(0, 0, 0, 0.1);
@@ -181,15 +203,18 @@ canvas {
 .container {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
+    flex-wrap: inherit;
+    justify-content: space-between;
     align-items: center;
     max-width: var(--main-max-width);
     margin: auto;
+    margin-right: auto;
+    margin-left: auto;
     overflow: hidden;
-    margin-top: 20px;
+    width: 100%;
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
 }
-
 
 /* left side of the page */
 .container .left,
@@ -266,33 +291,107 @@ canvas {
     align-self: center;
 }
 
+.fixed-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+
+
+
+/* navbar */
 .navbar {
+    position: relative;
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    background: #12121b !important;
     color: white;
-    font-family: montserrat;
-    font-family: 'Courier New', Courier, monospace;
+    font-family:inherit;
     text-decoration: none;
     z-index: 2;
     background-color: rgba(0, 0, 0, 0.3);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+    /* temporary, make variable lader*/
+    padding: 16px 0;
+    margin-top: 0;
 }
 
-.navbar .navitem {
-    margin: 5px 20px;
+.nav {
     display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+
+.navbar-nav {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+@media(min-width: 1200px) {
+    .navbar-nav {
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 1200px) {
+    .navbar-expand-xl .navbar-nav .nav-link {
+      padding-right: .5rem;
+      padding-left: .5rem;
+    }
+  }
+
+.navbar .container {
+    display: flex;
+    flex-wrap: inherit;
+    align-items: center;
+    justify-content: inherit;
+}
+
+.navbar .logo-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
     align-items: center;
 }
 
-.navbar .navitem li {
-    font-size: 1.5em;
-    list-style: none;
-    display: inline-flex;
-    padding: 0;
-    margin: 0;
+.navbar a {
+    color: var(--main-link-color);
+    text-decoration: none !important;
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+.navbar .logo-container h2{
+    align-self: left;
+    margin:0;
+    color:rgb(250, 250, 250);
+}
+
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+}
+
+.navbar .navitem {
+    color: inherit;
+    box-sizing: border-box;
     font-weight: 600;
 }
 
@@ -310,6 +409,32 @@ canvas {
     color: white;
     margin: 0;
 }
+
+.navbar .externals-container{
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+}
+
+.navbar .externals-container a{
+    color:white;
+}
+
+.navbar .externals-container .block-externals{
+    margin:0;
+    background-color:inherit;
+    min-width: 200px;
+    font-size:2rem;
+}
+
+.block-externals .external{
+    padding: 0.5rem;
+    font-size: 2rem;
+}
+
+.fa-github {
+    content: "\f09b"; /* This is the Unicode for fa-github */
+  }
 
 .menuItems {
     z-index: 2;

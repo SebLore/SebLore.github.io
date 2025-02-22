@@ -6,29 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebGL Sorting Visualization</title>
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"> 
+
 </head>
 
 <body>
-    <div class="navbar">
-        <div class="navitem">
-            <a href="">
-                <div class="logo">
-                    <img src="../../images/logo.png" alt="logo">
+    <nav class="navbar fixed-top">
+        <div class="container">
+            <div class="logo-container">
+                <a class=logo href="/">
+                    <img src="../../images/logo.png" alt="logo" style="max-width:50px"/>
+                </a>
+                <a href="/">
+                    <h2>sloredotcom</h2>
+                </a>
+            </div>  
+            
+            <div id="navbarContent">
+                <div id="block-navigation">
+                    <ul id="navItems" class="nav navbar-nav">
+                        <li class="navitem">
+                            <a class="nav-link" href="../">HOME</a>
+                        </li>
+                        <li class="navitem">
+                            <a class="nav-link" href="../about/">ABOUT</a>
+                        </li>
+                        <li class="navitem">
+                            <a class="nav-link" href="../bars/">CODE</a>
+                        </li>
+                        <li class="navitem">
+                            <a class="nav-link" href="../writing/">WRITING</a>
+                        </li>
+                    </ul>
                 </div>
-            </a>
+            </div>
+            <div class="externals-container">
+                <div class="block-externals" >
+                    <ul id="externals" class="nav navbar-nav">
+                        <li class="navitem">
+                            <a class="nav-link" href="https://github.com/SebLore">
+                                <i class="fa-brands fa-github" style="font-size: inherit"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="navitem">
-            <h1>sloredotcom</h1>
-        </div>
-        <div class="navitem">
-            <ul>
-                <li><a href="../../">Home</a></li>
-                <li><a href="../../">About</a></li>
-                <li><a href="../bars">Code</a></li>
-                <li><a href="../writing">Writing</a></li>
-            </ul>
-        </div>
-    </div>
+    </nav>
     <div class="main-container">
         <div class="left">
             <details>
@@ -59,7 +83,10 @@
                 </div>
             </div>
         </div>
+        <p style="justify-content: center">This program is heavily inspired by the work of <a href="https://panthema.net/about/">Timo Bingmann</a><a href="https://panthema.net/2013/sound-of-sorting/>"The Sound of Sorting"</a></a> where he visualizes different sorting algorithms.
+            I wanted to do my own implementation, partially as practice in JavaScript, partially to have something to put on my website.</p>
     </div>
+    
 </body>
 <script id="vertex-shader" type="x-shader/x-vertex" data-shader-path="./glsl/vertexShader.glsl"></script>
 <script id="fragment-shader" type="x-shader/x-fragment" data-shader-path="./glsl/fragmentShader.glsl"></script>

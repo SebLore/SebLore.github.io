@@ -4,39 +4,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"> 
     <link rel="stylesheet" href="style.css">
     <title>Splashpage</title>
 </head>
 
-
-
 <body>
-    <div class="navbar">
-        <div class="navitem">
-            <a href="">
-                <div class="logo">
-                    <img src="../images/logo.png" alt="logo">
+    <div id="page-wrapper">
+    <!-- navigation -->
+    <div id="page">
+        <nav class="navbar fixed-top">
+            <div class="container">
+                <div class="logo-container">
+                    <a class=logo href="/">
+                        <img src="../images/logo.png" alt="logo" style="max-width:50px"/>
+                    </a>
+                    <a href="/">
+                        <h2>sloredotcom</h2>
+                    </a>
+                </div>  
+                
+                <div id="navbarContent">
+                    <div id="block-navigation">
+                        <ul id="navItems" class="nav navbar-nav">
+                            <li class="navitem">
+                                <a class="nav-link" href="/">HOME</a>
+                            </li>
+                            <li class="navitem">
+                                <a class="nav-link" href="./about/">ABOUT</a>
+                            </li>
+                            <li class="navitem">
+                                <a class="nav-link" href="./bars/">CODE</a>
+                            </li>
+                            <li class="navitem">
+                                <a class="nav-link" href="./writing/">WRITING</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </a>
+                <div class="externals-container">
+                    <div class="block-externals" >
+                        <ul id="externals" class="nav navbar-nav">
+                            <li class="navitem">
+                                <a class="nav-link" href="https://github.com/SebLore">
+                                    <i class="fa-brands fa-github""></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- content -->
+        <div class="main-container" id="main-c">
+            <h1>Coming Soon</h1>
+            <p>Our website is under construction. We'll be here soon with our new awesome site.</p>
         </div>
-        <div class="navitem">
-            <h1>sloredotcom</h1>
-        </div>
-        <div class="navitem">
-            <ul>
-                <li><a href="./">Home</a></li>
-                <li><a href="./">About</a></li>
-                <li><a href="bars/">Code</a></li>
-                <li><a href="writing/">Writing</a></li>
-            </ul>
-        </div>
+        <footer></footer>
     </div>
-    <div class="main-container" id="main-c">
-        <h1>Coming Soon</h1>
-        <p>Our website is under construction. We'll be here soon with our new awesome site.</p>
-    </div>
-
-
+</div>
+    
 </body>
 
 </html>
