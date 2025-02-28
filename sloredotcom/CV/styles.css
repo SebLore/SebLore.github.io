@@ -6,8 +6,8 @@
     --body-txt-color: #333;
     --header-bg-color: #2c3e50;
     --header-bg-gradient-color: #2c3ea0;
-    --header-txt-color: rgb(237, 237, 237);
-    --section-bg-color: white;
+    --header-txt-color: rgb(121, 121, 121);
+    --section-bg-color: #f0f0f0;
     --section-txt-color: #333;
     --section-border-color: #eee;
     --section-title-color: #2c3e50;
@@ -27,10 +27,10 @@
 html.light-mode{
     --body-bg-color: #f5f5f5;
     --body-txt-color: #333;
-    --header-bg-color: #6ea7e1;
-    --header-bg-gradient-color: #2c3ea0;
-    --header-txt-color: white;
-    --section-bg-color: white;
+    --header-bg-color: #428ad2;
+    --header-bg-gradient-color: #0f1e73;
+    --header-txt-color: #defff9;
+    --section-bg-color: #f0f0f0;
     --section-txt-color: #333;
     --section-border-color: #eee;
     --section-title-color: #2c3e50;
@@ -53,12 +53,12 @@ html.light-mode{
         --header-bg-color: #002a54;
         --header-bg-gradient-color: #2c3ea0;
         --header-txt-color: #f0f0f0;
-        --section-bg-color: #2c3e50;
-        --section-txt-color: white;
+        --section-bg-color: #10171e;
+        --section-txt-color: #f0f0f0;
         --section-border-color: #333;
         --section-title-color: #f0f0f0;
         --section-title-border-color: #f0f0f0;
-        --item-title-color: white;
+        --item-title-color: #f0f0f0;
         --item-subtitle-color: #3498db;
         --item-date-color: #7f8c8d;
         --item-description-color: #f0f0f0;
@@ -76,7 +76,7 @@ html.dark-mode{
     --header-bg-color: #06284d;
     --header-bg-gradient-color: #2c3ea0;
     --header-txt-color: #f0f0f0;
-    --section-bg-color: #2c3e50;
+    --section-bg-color: #10171e;
     --section-txt-color: #f0f0f0;
     --section-border-color: #333;
     --section-title-color: #f0f0f0;
@@ -370,19 +370,20 @@ a {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 20px;
-    gap: 10px;
+    margin: 20px;
+    gap: 20px;
 }
 
 /* round button */
 .toggles .toggle-button{
     display: flex;
+    flex-direction:row;
     justify-content: center;
     align-items: center;
     position: relative;
     text-align: center;
     top: 0;
-    right: 20px;
+    right: 0;
     background-color: var(--theme-toggle-bg-color);
     color: var(--theme-toggle-txt-color);
     border: none;
@@ -392,7 +393,6 @@ a {
     border-radius: 50%;
     cursor: pointer;
     font-size: 1.5rem;
-    margin: 0 5px;
     font-weight: bold;
     transition: background-color 0.5s;
     &:hover{
@@ -405,7 +405,7 @@ a {
     display: inline-block;
     cursor: pointer;
     background-color: inherit;
-    color: white;
+    color: #f0f0f0;
     border: none;
     border-radius: 5px;
     font-size: 1em;
@@ -417,7 +417,7 @@ a {
     width: fit-content;
     background: none;
     /* background-color: rgb(0, 0, 0, 0.2); */
-    color: white;
+    color: #f0f0f0;
     text-align: center;
     padding: 5px;
     border-radius: 5px;
@@ -450,7 +450,7 @@ a {
     overflow: hidden;
     background: none;
     /* background-color: rgb(0, 0, 0, 0.2); */
-    color: white;
+    color: #f0f0f0;
     text-align: center;
     padding: 5px;
     border-radius: 5px;

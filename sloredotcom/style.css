@@ -87,7 +87,7 @@
     }
 
     .navbar-nav{
-        flex-direction:row;
+        flex-direction: row;
     }
 }
 html {
@@ -358,10 +358,9 @@ canvas {
     list-style: none;
 }
 
-
 .navbar-nav {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-direction: column;
     padding-left: 0;
     margin-bottom: 0;
@@ -409,7 +408,6 @@ canvas {
 }
 
 .navbar a {
-    color: var(--main-link-color);
     text-decoration: none !important;
     display: flex;
     flex-direction: column;
@@ -417,11 +415,14 @@ canvas {
     align-items: center;
 }
 
-
-
 .nav-link {
-    display: block;
-    padding: 0.5rem 1rem;
+    
+    display: flex;
+    padding: 0.5rem;
+    min-width: 40px;
+    &:hover {
+       
+    }
 }
 
 .navbar .navitem {
@@ -447,6 +448,9 @@ canvas {
 
 .navbar .externals-container a {
     color: white;
+    &:hover {
+        color: rgb(171, 171, 171);
+    }
 }
 
 .navbar .externals-container .block-externals {

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="sv">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,21 +22,20 @@
             <h2 id="profile-title"></h2>
             <div class="toggles">
                 <button id="toggle-theme" type="button" class="toggle-button tooltip">
-
                     <span class="tooltip-text-left" id="toggle-theme-tooltip">filler</span>
                 </button>
                 <button id="toggle-language" type="button" class="toggle-button tooltip">
                     <span class="tooltip-text-left" id="toggle-language-tooltip">filler</span>
-                </button>                        
+                </button>
             </div>
         </header>
-        
+
         <!-- Summary Section -->
         <section class="cv-section">
             <h3 class="section-title" id="summary-title"></h3>
             <p id="summary-text"></p>
         </section>
-        
+
         <!-- Work Experience Section -->
         <section class="cv-section">
             <h3 class="section-title" id="work-experience-title"></h3>
@@ -54,11 +54,11 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- Education Section -->
         <section class="cv-section">
             <h3 class="section-title" id="education-title"></h3>
-            
+
             <!-- Degree 1 -->
             <div class="item">
                 <h4 class="item-title" id="degree1-title">fillme</h4>
@@ -73,7 +73,7 @@
                     </ul>
                 </div>
             </div>
-            
+
             <!-- Degree 2 -->
             <div class="item">
                 <h4 class="item-title" id="degree2-title">fillme</h4>
@@ -84,96 +84,83 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- Skills Section -->
         <section class="cv-section">
             <h3 class="section-title" id="section-skills">Skills</h3>
-            
+
             <div class="skills-container">
                 <!-- Programming Languages -->
                 <div class="skill-category">
                     <h4 id="programming-languages-title">Programming Languages</h4>
                     <ul class="skill-list">
-                        <li id="skill1">C/C++
+                        <li><span id="skill1">C/C++</span>
                             <span class="skill-level">
                                 <span class="skill-level-fill" style="width: 100%"></span>
                             </span>
                         </li>
-                        <li id="skill2">Python
+                        <li><span id="skill2">Python</span>
                             <span class="skill-level">
-                                <span class="skill-level-fill" style="width: 70%">50</span>
+                                <span class="skill-level-fill" style="width: 80%">50</span>
                             </span>
                         </li>
-                        <li id="skill3">JavaScript/HTML/CSS
-                            <span class="skill-level">
-                                <span class="skill-level-fill" style="width: 60%"></span>
-                            </span>
-                        </li>
-                        <li id="skill4">C#
-                            <span class="skill-level">
-                                <span class="skill-level-fill" style="width: 20%"></span>
-                            </span>
-                        </li>
-                        <li id="skill5">Java
-                            <span class="skill-level">
-                                <span class="skill-level-fill" style="width: 30%"></span>
-                            </span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- Frameworks & Libraries -->
-                <div class="skill-category">
-                    <h4 id="frameworks-title">Frameworks & Libraries</h4>
-                    <ul class="skill-list">
-                        <li id="framework1">CMake
-                            <span class="skill-level">
-                                <span class="skill-level-fill" style="width: 90%"></span>
-                            </span>
-                        </li>
-                        <li id="framework2">DirectX
-                            <span class="skill-level">
-                                <span class="skill-level-fill" style="width: 70%"></span>
-                            </span>
-                        </li>
-                        <li id="framework3">OpenGL/WebGL
-                            <span class="skill-level">
-                                <span class="skill-level-fill" style="width: 20%"></span>
-                            </span>
-                        </li>
-                        <li id="framework4">ImGui
+                        <li><span id="skill3">JavaScript/HTML/CSS</span>
                             <span class="skill-level">
                                 <span class="skill-level-fill" style="width: 60%"></span>
                             </span>
                         </li>
-                        <li id="framework5">SFML
-                            <span class="skill-level">
-                                <span class="skill-level-fill" style="width: 80%"></span>
-                            </span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Database & DevOps -->
-                <div class="skill-category">
-                    <h4 id="devops-title">Database & DevOps</h4>
-                    <ul class="skill-list">
-                        <li id="devops1">MySQL
-                            <span class="skill-level">
-                                <span class="skill-level-fill" style="width: 80%"></span>
-                            </span>
-                        </li>
-                        <li id="devops2">Docker
-                            <span class="skill-level">
-                                <span class="skill-level-fill" style="width: 20%"></span>
-                            </span>
-                        </li>
-                        <li id="devops3">Azure
+                        <li><span id="skill4">C#</span>
                             <span class="skill-level">
                                 <span class="skill-level-fill" style="width: 10%"></span>
                             </span>
                         </li>
+                        <li><span id="skill5">Java</span>
+                            <span class="skill-level">
+                                <span class="skill-level-fill" style="width: 30%"></span>
+                            </span>
+                        </li>
+                        <li><span id="skill6">Rust</span>
+                            <span class="skill-level">
+                                <span class="skill-level-fill" style="width: 20%"></span>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
 
+                <!-- Frameworks & Libraries -->
+                <div class="skill-category">
+                    <h4 id="frameworks-title">Frameworks & Libraries</h4>
+                    <ul class="skill-list">
+                        <li><span id="framework1">CMake</span>
+                            <span class="skill-level">
+                                <span class="skill-level-fill" style="width: 80%"></span>
+                            </span>
+                        </li>
+                        <li><span id="framework2">DirectX</span>
+                            <span class="skill-level">
+                                <span class="skill-level-fill" style="width: 70%"></span>
+                            </span>
+                        </li>
+                        <li><span id="framework3">OpenGL/WebGL</span>
+                            <span class="skill-level">
+                                <span class="skill-level-fill" style="width: 60%"></span>
+                            </span>
+                        </li>
+                        <li><span id="devops1">MySQL</span>
+                            <span class="skill-level">
+                                <span class="skill-level-fill" style="width: 80%"></span>
+                            </span>
+                        </li>
+                        <li><span id="devops2">Qt</span>
+                            <span class="skill-level">
+                                <span class="skill-level-fill" style="width: 20%"></span>
+                            </span>
+                        </li>
+                        <li><span id="devops3">Pandas</span>
+                            <span class="skill-level">
+                                <span class="skill-level-fill" style="width: 40%"></span>
+                            </span>
+                        </li>
                     </ul>
                 </div>
 
@@ -181,33 +168,58 @@
                 <div class="skill-category">
                     <h4 id="other-skills-title">Other Skills</h4>
                     <ul class="skill-list">
-                        <li id="other-skills3">Problem Solving
+                        <li><span id="other-skills1">Problem Solving</span>
                             <span class="skill-level">
                                 <span class="skill-level-fill" style="width: 95%"></span>
                             </span>
                         </li>
-                        <li id="other-skills1">Agile Methodologies
+                        <li><span id="other-skills2">Agile Methodologies</span>
                             <span class="skill-level">
                                 <span class="skill-level-fill" style="width: 70%"></span>
                             </span>
                         </li>
-                        <li id="other-skills2">Software Architecture
+                        <li><span id="other-skills3">Software Architecture</span>
                             <span class="skill-level">
                                 <span class="skill-level-fill" style="width: 85%"></span>
                             </span>
                         </li>
                     </ul>
                 </div>
+                <!-- Other Skills -->
+                <div class="skill-category">
+                    <h4 id="languages-title">Languages</h4>
+                    <ul class="skill-list">
+                        <li>
+                            <span id = "language1">Swedish</span>
+                            <span class="skill-level">
+                                <span class="skill-level-fill" style="width: 100%"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span id = "language2"></span>
+                            <span class="skill-level">
+                                <span class="skill-level-fill" style="width: 100%"></span>
+                            </span>
+                        </li>
+                        <li>
+                            <span id = "language3"></span>
+                            <span class="skill-level">
+                                <span class="skill-level-fill" style="width: 40%"></span>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </section>
-        
+
         <!-- Contact Section -->
         <section class="cv-section">
             <h3 class="section-title" id="contact-title">Contact Information</h3>
             <div class="contact-info">
                 <div class="contact-item">
                     <i class="fa fa-envelope"></i>
-                    <span id="contact-email"><a href="mailto:sebastian.lorensson@gmail.com">sebastian.lorensson@gmail.com</a></span>
+                    <span id="contact-email"><a
+                            href="mailto:sebastian.lorensson@gmail.com">sebastian.lorensson@gmail.com</a></span>
                 </div>
                 <div class="contact-item">
                     <i class="fa fa-phone" style="color: green;"></i>
@@ -219,12 +231,13 @@
                 </div>
                 <div class="contact-item">
                     <i class="fa-brands fa-linkedin" style="color: #0072b1;"></i>
-                    <span id="contact-linkedin"><a href="http://www.linkedin.com/in/sebastian-lorensson">linkedin.com/in/sebastian-lorensson</a></span>
+                    <span id="contact-linkedin"><a
+                            href="http://www.linkedin.com/in/sebastian-lorensson">linkedin.com/in/sebastian-lorensson</a></span>
                 </div>
             </div>
         </section>
         <!-- Languages Section -->
-         <section class="cv-section">
+        <section class="cv-section">
             <h3 class="section-title" id="title-code-stuff">Languages</h3>
             <div class="contact-info">
                 <div class="contact-item">
@@ -238,10 +251,11 @@
                     <i class="fa fa-globe"></i>
                     <span id="contact-website"><a href="Seblore.github.io">seblore.github.io</a></span>
                 </div>
-            </div>            
+            </div>
         </section>
     </div>
 
     <script src="../../js/cv-script.js"></script>
 </body>
+
 </html>

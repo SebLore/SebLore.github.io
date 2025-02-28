@@ -81,18 +81,6 @@ const toggleLanguageButton = document.getElementById("toggle-language");
 updateToggleThemeButtonText();
 updateToggleLanguageButtonText();
 
-// get all skill-level class items
-const skillLevelItems = document.querySelectorAll(".skill-level");
-
-// for each skillLevelFill container, set the width of the fill to the value of the innerHTML,
-// with 0 being none and 100 being 100% width
-function skillLevelFill() {
-  skillLevelItems.forEach((item) => {
-    const level = item.querySelector(".skill-level-fill").innerHTML;
-    fill.style.width = level;
-  });
-}
-
 function getPreferredTheme() {
   if (localStorage.getItem("theme")) {
     return localStorage.getItem("theme");
@@ -136,16 +124,6 @@ function updateToggleThemeButtonText() {
     : (toggleThemeButton.innerHTML = toggleThemeButton.innerHTML.replace("fa-sun", "fa-moon"));
 }
 
-// function updateToggleThemeButtonText() {
-//   if (!toggleThemeButton.innerHTML.includes("🌙") && !toggleThemeButton.innerHTML.includes("☀️")) {
-//     toggleThemeButton.innerHTML += "🌙";
-//   }
-//   getPreferredTheme() === "dark"
-//     ? (toggleThemeButton.innerHTML = toggleThemeButton.innerHTML.replace("🌙", "☀️"))
-//     : (toggleThemeButton.innerHTML = toggleThemeButton.innerHTML.replace("☀️", "🌙"));
-// }
-
-
 
 toggleLanguageButton.addEventListener("click", () => {
   const currentLanguage = getPreferredLanguage();
@@ -163,11 +141,17 @@ function getPreferredLanguage() {
 
 function updateToggleLanguageButtonText() {
   if (!toggleLanguageButton.innerHTML.includes("sv") && !toggleLanguageButton.innerHTML.includes("en")) {
-    toggleLanguageButton.innerHTML += "en";
+    toggleLanguageButton.innerHTML += localStorage.getItem("language");
+    document.documentElement.lang = localStorage.getItem("language");
+    return;
   }
-  getPreferredLanguage() === "en"
-    ? toggleLanguageButton.innerHTML = toggleLanguageButton.innerHTML.replace("sv", "en")
-    : toggleLanguageButton.innerHTML = toggleLanguageButton.innerHTML.replace("en", "sv");
+  let preferred = getPreferredLanguage();
+  if(preferred === "en") {
+    toggleLanguageButton.innerHTML = toggleLanguageButton.innerHTML.replace("sv", "en");
+  }
+  else {
+    toggleLanguageButton.innerHTML = toggleLanguageButton.innerHTML.replace("en", "sv");
+  }
 }
 
 // Update all language of the page
