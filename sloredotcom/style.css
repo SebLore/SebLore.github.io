@@ -80,10 +80,16 @@
 /* phone or tablet */
 @media (max-width: 768px) {
     :root {
-        --main-max-width: 50%;
+        --main-max-width: 768px;
+    }
+    #block-navigation {
+        display: none;
+    }
+
+    .navbar-nav{
+        flex-direction:row;
     }
 }
-
 html {
     /* box-sizing: border-box; */
 
