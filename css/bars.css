@@ -82,14 +82,8 @@
     :root {
         --main-max-width: 768px;
     }
-    #block-navigation {
-        display: none;
-    }
-
-    .navbar-nav{
-        flex-direction: row;
-    }
 }
+
 html {
     /* box-sizing: border-box; */
 
@@ -97,6 +91,7 @@ html {
     text-rendering: optimizeLegibility;
     -moz-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
     text-size-adjust: 100%;
 }
 
@@ -209,8 +204,10 @@ canvas {
     margin: 0 auto;
     border: solid 8px rgb(128, 128, 128);
     border-style: ridge;
-    max-width: 600px;
-    max-height: 400px;
+    width: 800;
+    height: 500;
+    max-width: 800px;
+    max-height: 500px;
 }
 
 /* custom types and classes */
@@ -240,7 +237,7 @@ canvas {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     margin-top: 3rem;
     background-color: inherit;
 }
@@ -358,9 +355,10 @@ canvas {
     list-style: none;
 }
 
+
 .navbar-nav {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     flex-direction: column;
     padding-left: 0;
     margin-bottom: 0;
@@ -408,6 +406,7 @@ canvas {
 }
 
 .navbar a {
+    color: var(--main-link-color);
     text-decoration: none !important;
     display: flex;
     flex-direction: column;
@@ -415,14 +414,11 @@ canvas {
     align-items: center;
 }
 
+
+
 .nav-link {
-    
-    display: flex;
-    padding: 0.5rem;
-    min-width: 40px;
-    &:hover {
-       
-    }
+    display: block;
+    padding: 0.5rem 1rem;
 }
 
 .navbar .navitem {
@@ -448,9 +444,6 @@ canvas {
 
 .navbar .externals-container a {
     color: white;
-    &:hover {
-        color: rgb(171, 171, 171);
-    }
 }
 
 .navbar .externals-container .block-externals {

@@ -1,3 +1,0 @@
-# Code
-
-Various coding projects

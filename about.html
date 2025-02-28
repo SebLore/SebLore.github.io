@@ -4,21 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sloredotcom</title>
+    <title>sloredotcom | About</title>
     <link rel="icon" href="../../images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        .centered-iframe {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+
+        }
+    </style>
 </head>
 
 <body>
-    <div id="page-wrapper">
-        <!-- navigation -->
-        <div id="page">
+    <div class="page-wrapper">
+        <div class="page">
+            <!-- Copy starts here -->
             <nav class="navbar fixed-top">
                 <div class="container">
                     <div class="logo-container">
                         <a class=logo href="/">
-                            <img src="../images/logo.png" alt="logo" style="max-width:50px" />
+                            <img src="./rsc/images/logo.png" alt="logo" style="max-width:50px" />
                         </a>
                         <a href="/">
                             <h2>sloredotcom</h2>
@@ -32,16 +42,16 @@
                                     <a class="nav-link" href="/">HOME</a>
                                 </li>
                                 <li class="navitem">
-                                    <a class="nav-link" href="./about/">ABOUT</a>
+                                    <a class="nav-link" href="">ABOUT</a>
                                 </li>
                                 <li class="navitem">
-                                    <a class="nav-link" href="./projects/">PROJECTS</a>
+                                    <a class="nav-link" href="./projects.html">PROJECTS</a>
                                 </li>
                                 <li class="navitem">
-                                    <a class="nav-link" href="./CV/">HIRE ME</a>
+                                    <a class="nav-link" href="./CV.html">HIRE ME</a>
                                 </li>
                                 <!-- <li class="navitem">
-                                    <a class="nav-link" href="./writing/">WRITING</a>
+                                    <a class="nav-link" href="../writing/">WRITING</a>
                                 </li> -->
                             </ul>
                         </div>
@@ -69,16 +79,21 @@
                     </div>
                 </div>
             </nav>
-            <!-- content -->
-            <div class=" main-container" id="main-c">
-                <h1>Coming Soon</h1>
-                <p>This webpage is a work in progress, please be patient while I clean things up . . . 
-                    (Try one of the nav links)</p>
+            <!-- Copy Ends Here -->
+             <div class="container">
+                 <div class="middle" style ="margin: 2rem 10%;">
+                    <h1>About</h1>
+                    <p>
+                        As you can probably see, there is nothing here yet. This page is a work in progress and this part in particular is more in progress than work.
+                        Please watch this slow loris eating a rice ball to counteract your disappointment:
+                    </p>
+                   
+                    <iframe class="centered-iframe" width="560" height="315" src="https://www.youtube.com/embed/18-xvIjH8T4?si=1KTrDyp2KscQVfWQ&amp;start=16" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    
+                </div>
             </div>
-            <footer></footer>
         </div>
     </div>
-
 </body>
 
 </html>

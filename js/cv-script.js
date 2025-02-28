@@ -3,16 +3,15 @@
  * It also allows the user to toggle between English and Swedish translations.
 
  */
-
 var translations = {}; // Store translations
 
 // Load translations from the JSON file
 function loadTranslations() {
-  fetch("translations.json")
+  fetch("CV/translations.json")
     .then((response) => response.json())
     .then((data) => {
       translations = data; // Store translations in global object
-      const language = localStorage.getItem("language") || getPreferredLanguage(); // Use language saved in localStorage or default to English
+      const language = getPreferredLanguage(); // Use language saved in localStorage or default to English
       applyLanguage(language);
     })
     .catch((error) => {
@@ -135,7 +134,7 @@ toggleLanguageButton.addEventListener("click", () => {
 
 // get language from the html lang attribute
 function getPreferredLanguage() {
-  return document.documentElement.lang;
+  return localStorage.getItem("language") ||  document.documentElement.lang || "sv";
 }
 
 
