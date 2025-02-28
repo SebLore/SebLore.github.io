@@ -17,7 +17,7 @@
         <div class="container">
             <div class="logo-container">
                 <a class=logo href="/">
-                    <img src="../../images/logo.png" alt="logo" style="max-width:50px" />
+                    <img src="../../../images/logo.png" alt="logo" style="max-width:50px" />
                 </a>
                 <a href="/">
                     <h2>sloredotcom</h2>
@@ -95,10 +95,8 @@
                     </p>
                 </div>
             </div>
-
             <div class="right">
                 <h3 id="sortAlg">Controls</h3>
-
                 <div class="controls">
                     <div class="buttons" style="flex-direction: rows; flex-wrap: nowrap;">
                         <button id="startButton" onclick="sortAnim()">Start</button>
@@ -108,12 +106,12 @@
                         <button id="shuffleButton">Shuffle Bars</button>
                     </div>
                     <div>
-                        <input type="number" id="barCountInput" value="50" min="10" max="2000" step="10">
+                        <input type="number" id="barCountInput" aria-label="nr of bars" value="50" min="10" max="2000" step="10">
                         <button id="setBarCountButton">Set Bar Count</button>
                     </div>
                     <div class="slider">
                         <label>Speed</label>
-                        <input type="range" min="300" max="500" value="400" id="speedControl">
+                        <input type="range" aria-label="speed" min="300" max="500" value="400" id="speedControl">
                     </div>
                 </div>
             </div>

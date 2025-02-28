@@ -23,7 +23,7 @@
     /* COLORS */
     --main-bg-color: #f5f5f5;
     --main-font-color: #333;
-    --main-high-light-color: #f0f0f0;
+    --main-highlight-color: #f0f0f0;
     --main-font-color-light: #666;
     --h1-color: #007bff;
     --h1-color-light: #0056b3;
@@ -57,7 +57,7 @@
         /* font colors */
         --main-font-color: #f5f5f5;
         --main-font-color-light: #ccc;
-        --main-high-light-color: #444;
+        --main-highlight-color: #444;
 
         /* link colors */
         --main-link-color: #8e02ae;
@@ -96,6 +96,7 @@ html {
     text-rendering: optimizeLegibility;
     -moz-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 *,
@@ -166,7 +167,7 @@ button {
 }
 
 button:hover {
-    background-color: var(--main-high-light-color);
+    background-color: var(--main-highlight-color);
 }
 
 details {
@@ -174,13 +175,13 @@ details {
     background-color: var(--main-bg-color);
     color: var(--main-font-color);
     padding: 1em;
-    border: 2px solid var(--main-high-light-color);
+    border: 2px solid var(--main-highlight-color);
     border-radius: 10px;
     box-shadow: 10px rgba(0, 0, 0, 0.1);
 }
 
 details:hover {
-    background-color: var(--main-high-light-color);
+    background-color: var(--main-highlight-color);
 }
 
 details[open] div {
@@ -296,11 +297,11 @@ canvas {
 }
 
 .controls input[type=number]:hover {
-    background-color: var(--main-high-light-color);
+    background-color: var(--main-highlight-color);
 }
 
 .controls input[type=number]:focus {
-    background-color: var(--main-high-light-color);
+    background-color: var(--main-highlight-color);
 }
 
 .controls .slider {
@@ -566,6 +567,7 @@ canvas {
     line-height: var(--main-line-height);
     font-weight: var(--main-font-weight);
 }
+
 .projects-container{
     position: relative;
     padding: 5rem;
