@@ -8,11 +8,11 @@
     "toggle-language-tooltip": "Change Language",
     "summary-title": "Summary",
     "summary-text": 
-      "Analytic, driven and diligent developer with 3 years of study experience in programming, analysis and system development and 5 years of work experience in a demanding professional role. Always looking to learn, improve, adapt and overcome. After a long time away from studying now back with a renewed focus and determination to become the best developer possible.",
+      "Analytic, driven and diligent developer with an attention to detail and 3 years of study experience in programming, analysis and system development, as well as 5 years of work experience in a demanding professional role. Always looking to learn, improve, adapt and overcome. After a long time away from studying now back with a renewed focus and determination to become the best developer possible.",
     "work-experience-title": "Work Experience",
     "job1-title": "Care assistant",
     "job1-company": "Prima Hemtjänst Blekinge AB",
-    "job1-date": "januari 2019 - augusti 2024",
+    "job1-date": "Jan 2019 — Aug 2024",
     "job1-desc": [
       "Had close contact with customers to ensure the best possible satisfaction and well-being",
       "Was responsible for providing personal care and service interventions to customers",
@@ -22,7 +22,7 @@
     "education-title": "Education",
     "degree1-title": "Master of Science in Computer Science, Specialization in Game Development",
     "degree1-university": "Blekinge Institute of Technology (BTH)",
-    "degree1-date": "aug 2016 — jan 2019 // sep 2024 — now",
+    "degree1-date": "Aug 2016 — Jan 2019 // Sep 2024 — now",
     "degree1-desc": [
       "Master's degree in Computer Science with a focus on 3D programming, integrated systems, and software optimization. Accepted with a SweSAT score of 1.7, which put me in the top 1% of all SAT test takers",
       "Over the course of the first semester of 2024 I earned 40 credits, 33% more than a regular semester, and received a C or higher in all courses where higher grades were possible",
@@ -30,9 +30,9 @@
     ],
     "degree2-title": "Student organizational work",
     "degree2-university": "Blekinge Institute of Technology (BTH)",
-    "degree2-date": "2016 — 2018",
+    "degree2-date": "Mar 2017 — Mar 2019",
     "degree2-desc": [
-      "Chairperson of the Blekinge Student Union (BSK)'s committee for introductory events and student activities for the period 2016-17",
+      "Chairperson of the Blekinge Student Union (BSK)'s committee for introductory events and student activities for the period 2017-18",
       "Chairman for the Blekinge Organized Game students (BOSS) branch of BSK for the mandate period 2017-2018" 
   ],
     "section-skills": "Skills",
@@ -58,11 +58,11 @@
     "toggle-theme-tooltip": "Växla Tema",
     "toggle-language-tooltip": "Byt Språk",
     "summary-title": "Sammanfattning",
-    "summary-text": "Analytisk, driven och flitig utvecklare med 3 års studieerfarenhet inom programmering, analys och systemutveckling och 5 års arbetslivserfarenhet inom en krävande yrkesroll. Alltid redo att lära mig, förbättra mig, anpassa mig och jobba för att slå oddsen. Efter en lång tid borta från mina studier är jag nu tillbaka med förnyat fokus och ett driv att bli den bästa utvecklaren jag kan vara.",
+    "summary-text": "Analytisk, driven och flitig utvecklare med ett öga för detaljer och 3 års studieerfarenhet inom programmering, analys och systemutveckling, samt 5 års arbetslivserfarenhet inom en krävande yrkesroll. Alltid redo att lära mig, förbättra mig, anpassa mig och jobba för att slå oddsen. Efter en lång tid borta från mina studier är jag nu tillbaka med förnyat fokus och ett driv att bli den bästa utvecklaren jag kan vara.",
     "work-experience-title": "Arbetslivserfarenhet",
     "job1-title": "Vårdbiträde",
     "job1-company": "Prima Hemtjänst Blekinge AB",
-    "job1-date": "januari 2019 — augusti 2024",
+    "job1-date": "jan 2019 — aug 2024",
     "job1-desc": [
       "Ansvarade för att utföra personlig omvårdnad och serviceinsatser hos kunder",
       "Hade nära och personligt kontakt med kunderna för att försäkra bästa möjliga belåtenhet och mående",
@@ -72,7 +72,7 @@
     "education-title": "Utbildning",
     "degree1-title": "Civilingenjörsexamen i spel- och programvaruteknik",
     "degree1-university": "Blekinge Tekniska Högskola (BTH)",
-    "degree1-date": "2016 — 2018 // 2024 — nu",
+    "degree1-date": "aug 2016 — jan 2019 // aug 2024 — nu",
     "degree1-desc": [
       "Civilingenjörsexamen med fokus på 3D-programmering, integrerade system och programvaruoptimering",
       "Blev antagen med ett högskolepoäng-resultat på 1.7, vilket var i de övre 99% av samtliga provtagande",
@@ -81,7 +81,7 @@
     ],
     "degree2-title": "Styrelse- och studentorganisatoriskt arbete",
     "degree2-university": "Blekinge Tekniska Högskola (BTH)",
-    "degree2-date": "2016 — 2018",
+    "degree2-date": "mar 2017 — mar 2019",
     "degree2-desc": [
       "Ledamot i Blekinge Studentkårs (BSK:s) utskott för introduktionsverksamhet under mandatperioden 2016-2017",
       "Ordförande för BSK:s utskott Blekinge Organiserade Spelstudenter (BOSS) under mandatperioden 2017-2018"
