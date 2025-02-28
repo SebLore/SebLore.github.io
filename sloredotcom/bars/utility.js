@@ -6,6 +6,10 @@
  * @returns {Array} - The shuffled array.
  */
 function shuffle(array) {
+    if (!Array.isArray(array)){ 
+        console.error("Input is not an array.");
+        return;
+    }
     for (let i = array.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
@@ -21,6 +25,11 @@ function shuffle(array) {
  * @returns {number} - A random integer between min and max.
  */
 function getRandomInt(min, max) {
+    if (min > max) {
+        console.error("Min cannot be greater than max");
+        return;
+    }
+    
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -36,7 +45,7 @@ function getRandomInt(min, max) {
 
 function generateStepArray(n, min, max) {
     let array = [];
-    const step = Math.abs(min, max) / n;
+    const step = Math.abs(max - min) / n;
     for (let i = 0; i < n; i++) {
         array.push(min + i * step);
     }

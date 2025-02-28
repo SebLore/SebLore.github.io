@@ -1,5 +1,7 @@
 function initializeWebGL(canvasid) {
-    if (canvasid === null) {
+    var canvas = document.getElementById(canvasid);
+
+    if (canvas === null) {
         document.createElement("canvas");
         document.body.appendChild(canvas);
         canvas.id = "glCanvas";
@@ -7,7 +9,6 @@ function initializeWebGL(canvasid) {
         canvas.height = 600;
     }
 
-    var canvas = document.getElementById(canvasid);
     var gl = canvas.getContext("webgl2");
     if (!gl) {
         alert("WebGL not supported!");
