@@ -1,0 +1,12 @@
+{ 
+    "bubble": {
+        "name": "Bubble Sort",
+        "info": "Bubble sort works by comparing two elements and swapping them if the one on the left is bigger than the one on the right. The animation illustrates this by showing how one bar will go to the right until it meets a taller bar, at which point the comparisons will use the taller bar instead until it reaches the end of the list and the process repeats, over and over, until the list is sorted.",
+        "data": {
+            "best": "n",
+            "average": "n^2", 
+            "worst": "n^2"
+        }
+    }, 
+    "insertion": {} 
+}

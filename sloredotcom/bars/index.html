@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sloredotcom | Code</title>
     <link rel="icon" href="../../images/logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
 </head>
 
+<!-- https://stackoverflow.com/questions/4938346/canvas-width-and-height-in-html5 -->
 <body>
     <nav class="navbar fixed-top">
         <div class="container">
@@ -55,9 +55,9 @@
         </div>
     </nav>
     <section>
-        <div class="container" style="height: 100vh; width: 100%; margin: 0;">
+        <div class="container" id="canvas-container">
             <div class="left">
-                <h1 id="sortAlg">Bubble Sort</h1>
+                <h3 id="sortAlg">Bubble Sort</h3>
                 <details>
                     <summary>What is bubble sort</summary>
                     <p>Bubble sort is a simple sorting algorithm that checks two values against each other and swaps
@@ -69,7 +69,7 @@
                 </details>
             </div>
             <div class="middle">
-                <canvas id="glCanvas" width="600" height="400"></canvas>
+                <canvas id="glCanvas" width="800" height="500"></canvas>
                 <div class="textbox">
                     <p>This program is heavily inspired by the work of
                         <a href="https://panthema.net/about/">Timo Bingmann</a>, specifically the project <a
@@ -83,9 +83,11 @@
             </div>
 
             <div class="right">
+                <h3 id="sortAlg">Controls</h3>
+
                 <div class="controls">
                     <div class="buttons" style="flex-direction: rows; flex-wrap: nowrap;">
-                        <button id="startButton" onclick="bubbleSort()">Start</button>
+                        <button id="startButton" onclick="sortAnim()">Start</button>
                         <button id="stopButton">Stop</button>
                     </div>
                     <div>
@@ -97,7 +99,7 @@
                     </div>
                     <div class="slider">
                         <label>Speed</label>
-                        <input type="range" min="100" max="500" value="400" id="speedControl">
+                        <input type="range" min="300" max="500" value="400" id="speedControl">
                     </div>
                 </div>
             </div>
@@ -106,6 +108,8 @@
 </body>
 <script id="vertex-shader" type="x-shader/x-vertex" data-shader-path="./glsl/vertexShader.glsl"></script>
 <script id="fragment-shader" type="x-shader/x-fragment" data-shader-path="./glsl/fragmentShader.glsl"></script>
-<script src="main.js"></script>
+<script type="text/javascript" src="utility.js" type=""></script>
+<script type="text/javascript" src="webgl-utilities.js"></script>
+<script type="text/javascript" src="main.js"></script>
 
 </html>
