@@ -1,14 +1,15 @@
 {
   "en": {
-    "print-header-text": "My resume can be read in dark mode and/or in Swedish at seblore.github.io/CV",
+    "print-header-text": "My resume can be read in an alternative theme and/or in Swedish at seblore.github.io/CV",
     "profile-name": "Sebastian Lorensson",
     "profile-title": "Aspiring Developer | Problem Solver | Team Player",
     "job-title": "Junior Developer",
+    "initial-info": "Toggle theme and language with the buttons →",
     "toggle-theme-tooltip": "Toggle Theme",
     "toggle-language-tooltip": "Change Language",
     "summary-title": "Summary",
     "summary-text": 
-      "Analytic, driven and diligent developer with an attention to detail and 3 years of study experience in programming, analysis and system development, as well as 5 years of work experience in a demanding professional role. Always looking to learn, improve, adapt and overcome. After a long time away from studying now back with a renewed focus and determination to become the best developer possible.",
+      "Analytical, driven and diligent developer with an attention to detail and 3 years of study experience in programming, analysis and system development, as well as 5 years of work experience in a demanding professional role. Always looking to learn, improve, adapt and overcome.",
     "work-experience-title": "Work Experience",
     "job1-title": "Care assistant",
     "job1-company": "Prima Hemtjänst Blekinge AB",
@@ -51,14 +52,14 @@
     "title-code-stuff": "See My Code"
   },
   "sv": {
-    "print-header-text": "Mitt CV finns tillgängligt att läsa med mörkt tema eller på engelska på seblore.github.io/CV",
+    "print-header-text": "Mitt CV kan läsas med alternativt tema eller på engelska på seblore.github.io/CV",
     "profile-name": "Sebastian Lorensson",
     "profile-title": "Driven Utvecklare | Problemlösare | Lagarbetare",
-    "job-title": "Junior Utvecklare",
+    "initial-info": "Växla tema och språk med knapparna →",
     "toggle-theme-tooltip": "Växla Tema",
     "toggle-language-tooltip": "Byt Språk",
     "summary-title": "Sammanfattning",
-    "summary-text": "Analytisk, driven och flitig utvecklare med ett öga för detaljer och 3 års studieerfarenhet inom programmering, analys och systemutveckling, samt 5 års arbetslivserfarenhet inom en krävande yrkesroll. Alltid redo att lära mig, förbättra mig, anpassa mig och jobba för att slå oddsen. Efter en lång tid borta från mina studier är jag nu tillbaka med förnyat fokus och ett driv att bli den bästa utvecklaren jag kan vara.",
+    "summary-text": "Analytisk, driven och flitig utvecklare med ett öga för detaljer och 3 års studieerfarenhet inom programmering, analys och systemutveckling, samt 5 års arbetslivserfarenhet inom en krävande yrkesroll. Alltid redo att lära mig, förbättra mig, anpassa mig och jobba för att slå oddsen.",
     "work-experience-title": "Arbetslivserfarenhet",
     "job1-title": "Vårdbiträde",
     "job1-company": "Prima Hemtjänst Blekinge AB",

@@ -14,18 +14,23 @@
     <div id="page-wrapper">
         <!-- navigation -->
         <div id="page">
-            <nav class="navbar fixed-top">
-                <div class="container">
-                    <div class="logo-container">
+            <nav class="navbar fixed-top" id="navbar">
+                <div class="container" id="navbar-container">
+                    <div class="logo-container" id="logo-container">
                         <a class=logo href="/">
                             <img src="./rsc/images/logo.png" alt="logo" style="max-width:50px" />
                         </a>
                         <a href="/">
                             <h2>sloredotcom</h2>
                         </a>
+                        <div id="menu-toggle">
+                            <button id="menu-button" onclick="toggleMenu()">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                        </div>
+                        
                     </div>
-
-                    <div id="navbarContent">
+                    <div>
                         <div id="block-navigation">
                             <ul id="navItems" class="nav navbar-nav">
                                 <li class="navitem">
@@ -86,5 +91,7 @@
     </div>
 
 </body>
+
+<script src="./js/index.js"></script>
 
 </html>

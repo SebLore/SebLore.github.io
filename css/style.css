@@ -1,8 +1,13 @@
 /*
-*  Document
+* Main style for the whole webside
 *
-*   change from 'box-sizing: content-box' so  'width' is not affected by padding or border
 */
+
+/*
+*   Set instead of content box
+*
+*/
+
 
 *,
 *::before,
@@ -77,18 +82,34 @@
     }
 }
 
+#menu-toggle {
+    display: none;
+}
+
 /* phone or tablet */
 @media (max-width: 768px) {
     :root {
         --main-max-width: 768px;
     }
-    #block-navigation {
+    #navItems {
         display: none;
+        flex-direction:row;
     }
 
     .navbar-nav{
         flex-direction: row;
     }
+
+    #externals{
+        display: none;
+        flex-direction: row;
+    }
+
+    #menu-toggle{
+        display: flex;
+        margin: 0 2rem;
+    }
+
 }
 html {
     /* box-sizing: border-box; */
