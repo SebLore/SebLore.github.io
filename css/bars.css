@@ -19,7 +19,7 @@
     scroll-behavior: smooth;
     overflow-x: hidden;
     /*custom */
-    --main-font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    /* --main-font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
 
     /* COLORS */
     --main-bg-color: #f5f5f5;
@@ -202,38 +202,49 @@ details p {
 
 canvas {
     display: flex;
+    flex: 2;
     margin: 0 auto;
     border: solid 8px rgb(128, 128, 128);
     border-style: ridge;
     width: 800;
     height: 500;
-    max-width: 800px;
-    max-height: 500px;
+    /* max-width: 800px;
+    max-height: 500px; */
 }
 
 /* custom types and classes */
 
-/* 
-* generic flexbox container
- */
+.no-margin {
+    margin: 0;
+}
 
-
-/* left side of the page */
 .container .left,
 .container .right {
-    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     margin: 1rem;
-    margin-top: 3rem;
     background-color: inherit;
+    text-align: left;
 }
 
+/* .container .left h3, .container .right h3 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 2rem;
+    min-width: 2rem;
+    
+} */
+
 .container .middle {
+    flex: 2;
     display: flex;
     flex-direction: column;
-    margin-top: 3rem;
+    margin-top: 1rem;
     background-color: inherit;
 }
 
@@ -243,12 +254,20 @@ canvas {
     align-items: center;
 }
 
+
+/* container for controls */
 .controls {
     display: grid;
-    flex-direction: column;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
     justify-content: center;
     align-items: center;
-    text-align: left;
+    text-align: center;
+    width: 100%;
+    background-color: var(--main-bg-color);
+    color: var(--main-font-color);
+    border-radius: 5px;
 }
 
 .controls input[type=number] {
@@ -266,6 +285,7 @@ canvas {
 
 .controls input[type=number]:hover {
     background-color: var(--main-high-light-color);
+    width: fit-content;
 }
 
 .controls input[type=number]:focus {
@@ -279,20 +299,13 @@ canvas {
     align-items: center;
     text-align: center;
     margin: 10px;
+    width: 100%;
 }
 
 .controls .slider label {
     font-size: 1rem;
     font-weight: bold;
     align-self: center;
-}
-
-.fixed-top {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 1030;
 }
 
 

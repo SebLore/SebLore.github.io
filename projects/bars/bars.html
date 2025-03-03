@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sloredotcom | Code</title>
-    <link rel="icon" href="../../images/logo.png" type="image/x-icon">
+    <link rel="icon" href="/rsc/images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/bars.css">
@@ -14,110 +14,121 @@
 <!-- https://stackoverflow.com/questions/4938346/canvas-width-and-height-in-html5 -->
 
 <body>
-    <nav class="navbar fixed-top">
-        <div class="container">
-            <div class="logo-container">
-                <a class=logo href="/">
-                    <img src="../../rsc/images/logo.png" alt="logo" style="max-width:50px" />
-                </a>
-                <a href="/">
-                    <h2>sloredotcom</h2>
-                </a>
+    <div class="page-wrapper">
+        <!-- Copy starts here -->
+        <nav class="navbar fixed-top">
+            <div class="container">
+                <div class="logo-container">
+                    <a class=logo href="/">
+                        <img src="/rsc/images/logo.png" alt="logo" style="max-width:50px" />
+                    </a>
+                    <a href="/">
+                        <h2>sloredotcom</h2>
+                    </a>
+                </div>
+                <div id="navbarContent">
+                    <div id="block-navigation">
+                        <ul id="navItems" class="nav navbar-nav">
+                            <li class="navitem">
+                                <a class="nav-link" href="/">HOME</a>
+                            </li>
+                            <li class="navitem">
+                                <a class="nav-link" href="">ABOUT</a>
+                            </li>
+                            <li class="navitem">
+                                <a class="nav-link" href="/projects.html">PROJECTS</a>
+                            </li>
+                            <li class="navitem">
+                                <a class="nav-link" href="/CV">HIRE ME</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="externals-container">
+                    <div class="block-externals">
+                        <ul id="externals" class="nav navbar-nav">
+                            <li class="navitem">
+                                <a class="nav-link" href="https://github.com/SebLore">
+                                    <i class="fa-brands fa-github"></i>
+                                </a>
+                            </li>
+                            <li class="navitem">
+                                <a class="nav-link" href="https://linkedin.com/in/sebastian-lorensson">
+                                    <i class="fa-brands fa-linkedin-in fa-2"></i>
+                                </a>
+                            </li>
+                            <li class="navitem">
+                                <a class="nav-link" href="mailto:sebastian.lorensson@gmail.com">
+                                    <i class="fa fa-envelope"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+        </nav>
+        <div class="page">
+            <!-- copy ends here -->
+            <div class="container" id="canvas-container">
+                <div class="container flex-column">
 
-            <div id="navbarContent">
-                <div id="block-navigation">
-                    <ul id="navItems" class="nav navbar-nav">
-                        <li class="navitem">
-                            <a class="nav-link" href="/">HOME</a>
-                        </li>
-                        <li class="navitem">
-                            <a class="nav-link" href="/about.html">ABOUT</a>
-                        </li>
-                        <li class="navitem">
-                            <a class="nav-link" href="/projects.html">PROJECTS</a>
-                        </li>
-                        <li class="navitem">
-                            <a class="nav-link" href="/CV">HIRE ME</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="externals-container">
-                <div class="block-externals">
-                    <ul id="externals" class="nav navbar-nav">
-                        <li class="navitem">
-                            <a class="nav-link" href="https://github.com/SebLore">
-                                <i class="fa-brands fa-github"></i>
-                            </a>
-                        </li>
-                        <li class="navitem">
-                            <a class="nav-link" href="https://linkedin.com/in/sebastian-lorensson">
-                                <i class="fa-brands fa-linkedin-in fa-2"></i>
-                            </a>
-                        </li>
-                        <li class="navitem">
-                            <a class="nav-link" href="mailto:sebastian.lorensson@gmail.com">
-                                <i class="fa fa-envelope"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <section>
-        <div class="container" id="canvas-container">
-            <div class="left">
-                <div class="info-card">
-                    <h3 id="sortAlg">Bubble Sort</h3>
-                        <p>Bubble sort is a simple sorting algorithm that checks two values against each other and swaps
+                <div class="left">
+                    <div class="info-card">
+                        <h3 id="sortAlg">Bubble Sort</h3>
+                        <p>Bubble sort is a simple sorting algorithm that checks two values against each other and
+                            swaps
                             their
                             positions in the array if the first is larger than the second.</p>
-                            <br>
-                            <p>It functions by picking the first
-                            element in an array, then iterating across the array until it finds an element that is bigger
+                        <br>
+                        <p>It functions by picking the first
+                            element in an array, then iterating across the array until it finds an element that is
+                            bigger
                             than
-                            it, at which point that element will be replace the starting element for this iteration.</p>
+                            it, at which point that element will be replace the starting element for this iteration.
+                        </p>
                     </div>
-            </div>
-            <div class="middle">
-                <canvas id="glCanvas" width="640" height="480"></canvas>
-            </div>
-            <div class="right">
-                <div class="controls">
-                    <h3 id="sortAlg">Controls</h3>
-                    <div class="buttons" style="flex-direction: rows; flex-wrap: nowrap;">
-                        <button id="startButton" onclick="sortAnim()">Start</button>
-                        <button id="stopButton">Stop</button>
-                    </div>
-                    <div>
-                        <button id="shuffleButton">Shuffle Bars</button>
-                    </div>
-                    <div>
-                        <input type="number" id="barCountInput" aria-label="nr of bars" value="50" min="10" max="2000" step="10">
-                        <button id="setBarCountButton">Set Bar Count</button>
-                    </div>
-                    <div class="slider">
-                        <label>Speed</label>
-                        <input type="range" aria-label="speed" min="300" max="500" value="400" id="speedControl">
+                </div></div>
+                <div class="middle">
+                    <canvas id="glCanvas" width="640" height="480"></canvas>
+                </div>
+                <div class="container flex-column">
+                <div class="right">
+                        <h3 id="sortAlg">Controls</h3>
+                        <div class="controls">
+                            <div class="buttons" style="flex-direction: rows; flex-wrap: nowrap;">
+                                <button id="startButton" onclick="sortAnim()">Start</button>
+                                <button id="stopButton">Stop</button>
+                            </div>
+                            <div>
+                                <button id="shuffleButton">Shuffle Bars</button>
+                            </div>
+                            <div>
+                                <input type="number" id="barCountInput" aria-label="nr of bars" value="50" min="10"
+                                max="2000" step="10">
+                                <button id="setBarCountButton">Set Bar Count</button>
+                            </div>
+                            <div class="slider">
+                                <label>Speed</label>
+                                <input type="range" aria-label="speed" min="300" max="500" value="400" id="speedControl">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container">
-            <div class="textbox">
-                <p>This program is heavily inspired by the work of
-                    <a href="https://panthema.net/about/">Timo Bingmann</a>, specifically the project <a
-                    href="https://panthema.net/2013/sound-of-sorting/">"The Sound of Sorting"</a></a>.
-                    I wanted to do my own implementation, partially as practice in JavaScript, partially to have
-                    something
-                    to
-                    put on my website.
-                </p>
+            <div class="container flex-column">
+                <div class="textbox">
+                    <p>This program is heavily inspired by the work of
+                        <a href="https://panthema.net/about/">Timo Bingmann</a>, specifically the project <a
+                            href="https://panthema.net/2013/sound-of-sorting/">"The Sound of Sorting"</a></a>.
+                        I wanted to do my own implementation, partially as practice in JavaScript, partially to have
+                        something
+                        to
+                        put on my website.
+                    </p>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
 </body>
 <script id="vertex-shader" type="x-shader/x-vertex" data-shader-path="./glsl/vertexShader.glsl"></script>
 <script id="fragment-shader" type="x-shader/x-fragment" data-shader-path="./glsl/fragmentShader.glsl"></script>
