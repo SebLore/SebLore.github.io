@@ -7,8 +7,8 @@
     <title>sloredotcom | Code</title>
     <link rel="icon" href="../../images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="../../css/bars.css">
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/bars.css">
 </head>
 
 <!-- https://stackoverflow.com/questions/4938346/canvas-width-and-height-in-html5 -->
@@ -69,33 +69,24 @@
     <section>
         <div class="container" id="canvas-container">
             <div class="left">
-                <h3 id="sortAlg">Bubble Sort</h3>
-                <details>
-                    <summary>What is bubble sort</summary>
-                    <p>Bubble sort is a simple sorting algorithm that checks two values against each other and swaps
-                        their
-                        positions in the array if the first is larger than the second. It functions by picking the first
-                        element in an array, then iterating across the array until it finds an element that is bigger
-                        than
-                        it, at which point that element will be replace the starting element for this iteration.</p>
-                </details>
+                <div class="info-card">
+                    <h3 id="sortAlg">Bubble Sort</h3>
+                        <p>Bubble sort is a simple sorting algorithm that checks two values against each other and swaps
+                            their
+                            positions in the array if the first is larger than the second.</p>
+                            <br>
+                            <p>It functions by picking the first
+                            element in an array, then iterating across the array until it finds an element that is bigger
+                            than
+                            it, at which point that element will be replace the starting element for this iteration.</p>
+                    </div>
             </div>
             <div class="middle">
                 <canvas id="glCanvas" width="640" height="480"></canvas>
-                <div class="textbox">
-                    <p>This program is heavily inspired by the work of
-                        <a href="https://panthema.net/about/">Timo Bingmann</a>, specifically the project <a
-                            href="https://panthema.net/2013/sound-of-sorting/">"The Sound of Sorting"</a></a>.
-                        I wanted to do my own implementation, partially as practice in JavaScript, partially to have
-                        something
-                        to
-                        put on my website.
-                    </p>
-                </div>
             </div>
             <div class="right">
-                <h3 id="sortAlg">Controls</h3>
                 <div class="controls">
+                    <h3 id="sortAlg">Controls</h3>
                     <div class="buttons" style="flex-direction: rows; flex-wrap: nowrap;">
                         <button id="startButton" onclick="sortAnim()">Start</button>
                         <button id="stopButton">Stop</button>
@@ -112,6 +103,18 @@
                         <input type="range" aria-label="speed" min="300" max="500" value="400" id="speedControl">
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="textbox">
+                <p>This program is heavily inspired by the work of
+                    <a href="https://panthema.net/about/">Timo Bingmann</a>, specifically the project <a
+                    href="https://panthema.net/2013/sound-of-sorting/">"The Sound of Sorting"</a></a>.
+                    I wanted to do my own implementation, partially as practice in JavaScript, partially to have
+                    something
+                    to
+                    put on my website.
+                </p>
             </div>
         </div>
     </section>
