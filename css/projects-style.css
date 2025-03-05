@@ -394,13 +394,14 @@ canvas {
 
 .projects-container{
     position: relative;
-    padding: 5rem;
-    margin: 0 20%;
+    padding: 1rem;
+    margin: 2rem;
     list-style: none;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-wrap: wrap;
     gap: 1rem;
+    border-radius: 5px;
 }
 
 .projects-item{
@@ -422,9 +423,8 @@ canvas {
 .projects-item h4{
     text-wrap: nowrap;
     font-size: 1rem;
-    margin: 0;
+    margin: 0.5rem;
     padding: 0;
-    z-index: 2;
 }
 
 .projects-item .images{
@@ -434,10 +434,7 @@ canvas {
 
 .projects-item .images img{
     position: absolute;
-    left: 0;
-    padding: 10px;
-    /* top: 50%; */
-    
+    left: 0;    
     width: 100%;
     height: 100%;
     max-width: 100%;

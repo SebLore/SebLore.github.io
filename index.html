@@ -4,16 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sloredotcom</title>
+    <title>seblore</title>
     <link rel="icon" href="/rsc/images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
+
 <body>
-    <div id="page-wrapper">
+    <div id="page-wrapper" style="display:none">
         <!-- navigation -->
-        <div id="page">
+        <div class="page" id="page">
             <nav class="navbar fixed-top" id="navbar">
                 <div class="container" id="navbar-container">
                     <div class="logo-container" id="logo-container">
@@ -21,14 +22,14 @@
                             <img src="./rsc/images/logo.png" alt="logo" style="max-width:50px" />
                         </a>
                         <a href="/">
-                            <h2>sloredotcom</h2>
+                            <h2>seblore</h2>
                         </a>
-                        <div id="menu-toggle">
-                            <button id="menu-button" onclick="toggleMenu()">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                        </div>
                         
+                    </div>
+                    <div id="menu-toggle">
+                        <button id="menu-button" onclick="toggleMenu()">
+                            <i class="fa fa-bars"></i>
+                        </button>
                     </div>
                     <div>
                         <div id="block-navigation">
@@ -43,9 +44,8 @@
                                     <a class="nav-link" href="/projects.html">PROJECTS</a>
                                 </li>
                                 <li class="navitem">
-                                    <a class="nav-link" href="/CV">HIRE ME</a>
+                                    <a class="nav-link" href="/CV">CV</a>
                                 </li>
-
                             </ul>
                         </div>
                     </div>
@@ -90,6 +90,13 @@
 
 </body>
 
+<script>
+    window.onload = function () {
+        window.location.href = "/about.html";
+    }
+</script>
 <script src="./js/index.js"></script>
+<!-- redirect to about section -->
+
 
 </html>

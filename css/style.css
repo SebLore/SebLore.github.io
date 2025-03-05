@@ -92,33 +92,8 @@
     display: none;
 }
 
-/* phone or tablet */
-@media (max-width: 768px) {
-    :root {
-        --main-max-width: 768px;
-    }
-
-    #navItems {
-        display: none;
-        flex-direction: row;
-    }
-
-
-    #externals {
-        display: none;
-        flex-direction: row;
-    }
-
-    #menu-toggle {
-        display: flex;
-        margin: 0 2rem;
-    }
-
-}
 
 html {
-    /* box-sizing: border-box; */
-
     height: 100%;
     text-rendering: optimizeLegibility;
     -moz-text-size-adjust: 100%;
@@ -243,17 +218,6 @@ details p {
     font-size: 14px;
 }
 
-canvas {
-    display: flex;
-    margin: 0 auto;
-    border: solid 8px rgb(128, 128, 128);
-    border-style: ridge;
-    max-width: 600px;
-    max-height: 400px;
-}
-
-/* custom types and classes */
-
 /* 
 * generic flexbox container
  */
@@ -262,7 +226,6 @@ canvas {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* align-items: center; */
     text-align: center;
     margin: auto;
     padding: 0;
@@ -282,7 +245,7 @@ canvas {
     justify-content: center;
     align-items: center;
     margin: auto;
-    overflow: hidden;
+    overflow-x: hidden;
     width: 100%;
     padding-right: 0.75rem;
     padding-left: 0.75rem;
@@ -348,18 +311,7 @@ canvas {
     list-style: none;
 }
 
-@media(min-width: 1200px) {
-    .navbar-nav {
-        flex-direction: row;
-    }
-}
 
-@media (min-width: 1200px) {
-    .navbar-expand-xl .navbar-nav .nav-link {
-        padding-right: .5rem;
-        padding-left: .5rem;
-    }
-}
 
 .navbar .container {
     display: flex;
@@ -531,12 +483,16 @@ canvas {
     justify-content: center;
     align-items: center;
     margin: 2rem;
-    padding: 1rem;
+    padding: 2rem;
     background-color: var(--main-bg-color);
     background-color: color-mix(in srgb, var(--main-bg-color), black 20%);
     color: var(--main-font-color);
     border-radius: 5px;
     box-shadow: 0 1rem 10px rgba(0, 0, 0, 0.1);
+}
+
+.black-box{
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .about-section h1 {
@@ -560,7 +516,7 @@ canvas {
     margin-bottom: 1rem;
 }
 
-.about-section h5::after{
+.about-section h5::after {
     content: " ";
     display: flex;
     width: 100%;
@@ -574,10 +530,11 @@ canvas {
     0% {
         width: 0;
     }
+
     100% {
         width: 100%;
     }
-    
+
 }
 
 .about-section p {
@@ -629,6 +586,7 @@ canvas {
     border: 1px solid #ffffff;
     color: white;
     margin-right: 4px;
+
     &:nth-child(5n) {
         transform: rotate(300deg);
         -webkit-transform: rotate(300deg);
@@ -643,9 +601,22 @@ canvas {
     }
 }
 
+@media(min-width: 1200px) {
+    .navbar-nav {
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 1200px) {
+    .navbar-expand-xl .navbar-nav .nav-link {
+        padding-right: .5rem;
+        padding-left: .5rem;
+    }
+}
+
 /* media specific changes */
-/* @media screen and (max-width: 1600px) {
-    .navBar {
+@media screen and (max-width: 1600px) {
+    .nav-bar {
         grid-template-columns: [start] 1fr [logo-end] 1fr [menu-start] 1fr [menu-end];
     }
 
@@ -664,4 +635,64 @@ canvas {
     .navBar {
         display: grid;
     }
-} */
+}
+
+/* phone or tablet */
+@media (max-width: 768px) {
+    :root {
+        --main-max-width: 700px;
+        overflow: visible;
+        font-size: 14px;
+    }
+
+    .nav {
+        flex-direction: column;
+        justify-content: stretch;
+    }
+
+    #navbar-container{
+        flex-wrap: wrap;
+        font-size: 1.2rem;
+    }
+
+    #navItems {
+        display: none;
+        flex-direction: row;
+    }
+
+    #externals {
+        display: none;
+        flex-direction: row;
+    }
+
+    #menu-toggle {
+        display: flex;
+    }
+
+    #menu-button:hover {
+        background-color: var(--main-high-light-color);
+    }
+
+    #menu-button:active {
+        background-color: var(--main-high-light-color);
+    }
+
+    .page {
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .about-section {
+        margin: 0;
+        padding: 1em;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .textbox {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        white-space: wrap;
+    }
+}
