@@ -9,7 +9,7 @@
     "toggle-language-tooltip": "Change Language",
     "summary-title": "Summary",
     "summary-text": 
-      "Analytical, driven and diligent developer with an attention to detail and 3 years of study experience in programming, analysis and system development, as well as 5 years of work experience in a demanding professional role. Always looking to learn, improve, adapt and overcome.",
+      "Analytical, driven, diligent and joyful developer with an attention to detail and 3 years of study experience in programming, analysis and system development, as well as 5 years of work experience in a demanding professional role. Jovial and playful but still professional, is always looking to learn, improve, adapt and overcome.",
     "work-experience-title": "Work Experience",
     "job1-title": "Care assistant",
     "job1-company": "Prima Hemtjänst Blekinge AB",
@@ -29,10 +29,10 @@
       "Over the course of the first semester of 2024 I earned 40 credits, 33% more than a regular semester, and received a C or higher in all courses where higher grades were possible",
       "My group achieved the highest possible score in a group assignment where I acted as project manager, through thorough planning and dedication"
     ],
-    "degree2-title": "Student organizational work",
-    "degree2-university": "Blekinge Institute of Technology (BTH)",
-    "degree2-date": "Mar 2017 — Mar 2019",
-    "degree2-desc": [
+    "schoolstuff-title": "Student organizational work",
+    "schoolstuff-university": "Blekinge Institute of Technology (BTH)",
+    "schoolstuff-date": "Mar 2017 — Mar 2019",
+    "schoolstuff-desc": [
       "Chairperson of the Blekinge Student Union (BSK)'s committee for introductory events and student activities for the period 2017-18",
       "Chairman for the Blekinge Organized Game students (BOSS) branch of BSK for the mandate period 2017-2018" 
   ],
@@ -59,7 +59,7 @@
     "toggle-theme-tooltip": "Växla Tema",
     "toggle-language-tooltip": "Byt Språk",
     "summary-title": "Sammanfattning",
-    "summary-text": "Analytisk, driven och flitig utvecklare med ett öga för detaljer och 3 års studieerfarenhet inom programmering, analys och systemutveckling, samt 5 års arbetslivserfarenhet inom en krävande yrkesroll. Alltid redo att lära mig, förbättra mig, anpassa mig och jobba för att slå oddsen.",
+    "summary-text": "Analytisk, driven, flitig och skojfrisk utvecklare med ett öga för detaljer och 3 års studieerfarenhet inom programmering, analys och systemutveckling, samt 5 års arbetslivserfarenhet inom en krävande yrkesroll. Skrattglad med glimten i ögat men alltid professionell, är alltid redo att lära mig, förbättra mig, anpassa mig och jobba för att slå oddsen.",
     "work-experience-title": "Arbetslivserfarenhet",
     "job1-title": "Vårdbiträde",
     "job1-company": "Prima Hemtjänst Blekinge AB",
@@ -80,10 +80,10 @@
       "Under första terminen tillbaka tjänade jag in 40 högskolepoäng, 33% mer än vad en termin innefattar, och fick C eller högre i samtliga kurser där högre betyg var möjligt",
       "I ett grupparbete inom programvaruarkitektur där jag agerade projektledare fick vår grupp högsta möjliga betyg"
     ],
-    "degree2-title": "Styrelse- och studentorganisatoriskt arbete",
-    "degree2-university": "Blekinge Tekniska Högskola (BTH)",
-    "degree2-date": "mar 2017 — mar 2019",
-    "degree2-desc": [
+    "schoolstuff-title": "Styrelse- och studentorganisatoriskt arbete",
+    "schoolstuff-university": "Blekinge Tekniska Högskola (BTH)",
+    "schoolstuff-date": "mar 2017 — mar 2019",
+    "schoolstuff-desc": [
       "Ledamot i Blekinge Studentkårs (BSK:s) utskott för introduktionsverksamhet under mandatperioden 2016-2017",
       "Ordförande för BSK:s utskott Blekinge Organiserade Spelstudenter (BOSS) under mandatperioden 2017-2018"
     ],
