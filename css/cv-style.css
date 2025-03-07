@@ -23,6 +23,7 @@
     --theme-toggle-bg-color: #3498db;
     --theme-toggle-txt-color: #f0f0f0;
     --theme-toggle-hover-bg-color: #00CED1;
+    --cover-letter-bg-color: #f0f0f0;
 }
 
 html.light-mode {
@@ -45,6 +46,7 @@ html.light-mode {
     --theme-toggle-bg-color: #3498db;
     --theme-toggle-txt-color: #f0f0f0;
     --theme-toggle-highlight-bg-color: #00CED1;
+    --cover-letter-bg-color: #f0f0f0;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -68,6 +70,8 @@ html.light-mode {
         --theme-toggle-highlight-bg-color: #00CED1;
         --theme-toggle-txt-color: black;
         --contact-item-link: #3498db;
+        --cover-letter-bg-color: #444;
+
     }
 }
 
@@ -93,6 +97,8 @@ html.dark-mode {
     --theme-toggle-bg-color: #3498db;
     --theme-toggle-highlight-bg-color: #00CED1;
     --theme-toggle-txt-color: #f0f0f0;
+    --cover-letter-bg-color: #444;
+    transition: 0.5s;
 }
 
 
@@ -503,6 +509,7 @@ a {
     padding-top: 1rem;
     font-size: 1.5rem;
     font-weight: bold;
+    -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
     background-color: rgba(0, 0, 0, 0.5);
     color: #f0f0f0;
@@ -544,6 +551,55 @@ a {
 .header-info ul {
     list-style: none;
 }
+
+
+/* For cover letter, switching it up a bit */
+
+.cover-letter-container{
+    display:flex;
+    flex-direction: column;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    page-break-inside: never;
+    min-width: 210mm;
+    min-height: 297mm;
+    margin: 1rem;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--cover-letter-bg-color);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+#cover-letter-content{
+    margin: 1rem;
+    align-self: center;
+}
+
+#cover-letter-content h4{
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.cover-letter-top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 3rem;
+}
+
+.cover-letter-to{
+    font-size: 1.2rem;
+    text-align: left;
+}
+.cover-letter-from{
+    text-align: right;
+}
+
+.cover-letter-container ul{
+    list-style-type: none;
+}
+
 
 
 /* Media queries for responsiveness */
@@ -609,10 +665,42 @@ a {
 
     .cv-header {
         background-image: none;
+        min-height: 297mm;
+        min-width: 210mm;
+        page-break-after: always;
+        display:flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .profile-img{
+        margin-top: 3rem;
+        height: 400px;
+        width: 400px;
+    }
+
+    #profile-name{
+        font-size: 4rem;
+    }
+
+    #profile-title{
+        font-size: 2rem;
+    }
+
+    #misc{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .contact-info{
+        font-size: 1rem;
+        flex-direction:row;
     }
 
     .cv-section {
-        padding: 20px;
+        margin: 0.5rem 0.4rem;
     }
 
     .cv-header h1 {
@@ -638,10 +726,30 @@ a {
         justify-content: center;
         align-items: center;
         font-weight: bold;
+        margin-top: 1rem;
+        font-size: 1.2rem;
     }
 
     #initial-info{
         display: none;
     }
 
+    .skill-category {
+        flex: 1 0 45%;
+        /* min-width: 30%; */
+    }
+
+    /* #section-skills{
+        page-break-before: always;
+    } */
+    
+    #school-stuff{
+        page-break-inside: never;
+    }
+
+    .cover-letter-container{
+        box-shadow: none;
+        padding: 3rem 2rem;
+    }
 }
+
