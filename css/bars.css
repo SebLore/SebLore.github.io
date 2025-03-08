@@ -435,6 +435,8 @@ canvas {
         margin-top: 0;
     }
 
+    
+
     .controls {
         display: flex;
         flex-direction: column;

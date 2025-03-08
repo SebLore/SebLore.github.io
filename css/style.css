@@ -238,6 +238,7 @@ details p {
     line-height: var(--main-line-height);
     font-weight: var(--main-font-weight);
     overflow-x: hidden;
+    transition: transform 0.3s ease-in-out;
 }
 
 .container {
@@ -665,6 +666,7 @@ details p {
     .nav {
         flex-direction: column;
         justify-content: stretch;
+        overflow-x: scroll;
     }
 
     #navbar-container {
