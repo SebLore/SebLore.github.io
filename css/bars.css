@@ -103,12 +103,15 @@ html {
 }
 
 body,
-button,
-input,
-select,
 textarea {
     font-family: var(--main-font-family);
     background-color: var(--main-bg-color);
+}
+
+button,
+input,
+select {
+    background-color: #666;
 }
 
 h1 {
@@ -214,6 +217,19 @@ canvas {
 
 /* custom types and classes */
 
+.canvas-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+    padding: 1rem;
+    width: 100%;
+    background-color: var(--main-bg-color);
+    color: var(--main-font-color);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
 .no-margin {
     margin: 0;
 }
@@ -228,25 +244,30 @@ canvas {
     text-align: left;
 }
 
-/* .container .left h3, .container .right h3 {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    min-height: 2rem;
-    min-width: 2rem;
-    
-} */
-
 .container .middle {
-    flex: 2;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     margin-top: 1rem;
     background-color: inherit;
 }
+
+.flex-justify-start {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.flex-align-start {
+    display: flex;
+    align-items: flex-start;
+}
+
+.flex-justify-center {
+    justify-content: center;
+}
+
 
 .flex-centered {
     display: flex;
@@ -295,10 +316,6 @@ canvas {
 .controls .slider {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-    margin: 10px;
     width: 100%;
 }
 
@@ -318,7 +335,11 @@ canvas {
     padding: 1rem;
     width: 60%;
     background-color: #2a2a2a;
-    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 10px 0 rgba(0,   0, 0, 0.1);
+}
+
+.page{
+    flex-direction: row;
 }
 
 .sidebar {
@@ -388,3 +409,65 @@ canvas {
         display: grid;
     }
 } */
+
+@media (max-width: 768px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .canvas-container{
+        margin: 0;
+        flex-direction: column;
+    }
+
+    .container .left,
+    .container .right {
+        margin: 0;
+    }
+    .container .left{
+        order: 3;
+    }
+
+    .container .middle {
+        margin-top: 0;
+    }
+
+    .controls {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    canvas {
+        width: 100%;
+        height: 100%;
+    }
+
+
+    .controls .slider {
+        width: 100%;
+    }
+
+    .textbox {
+        width: 100%;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    .infocard {
+        width: 100%;
+    }
+        
+}

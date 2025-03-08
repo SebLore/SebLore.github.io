@@ -296,6 +296,8 @@ details p {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     line-height: 1rem;
     min-width: 100%;
+
+    transition: transform 0.3s ease-in-out;
 }
 
 .nav {
@@ -314,11 +316,8 @@ details p {
     list-style: none;
 }
 
-
-
 .navbar .container {
     display: flex;
-    flex-wrap: nowrap;
     align-items: center;
     justify-content: space-around;
     position: relative;
@@ -527,6 +526,10 @@ details p {
     background-image: linear-gradient(to right, var(--main-link-color), var(--main-link-hover-color));
     margin: 0;
     animation: slide 1s ease-in-out;
+}
+
+#loris{
+    align-self:center;
 }
 
 @keyframes slide {
