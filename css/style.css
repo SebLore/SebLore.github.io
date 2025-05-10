@@ -133,6 +133,11 @@ h3 {
     color: var(--h3-color);
 }
 
+.h3{
+    border-bottom: 1px solid var(--h3-color);
+    padding-bottom: 0.5rem;
+}
+
 
 
 /* established types and classes */
@@ -158,6 +163,7 @@ a:hover {
 
 p {
     font-size: var(--p-font-size);
+    color: var(--main-font-color);
     margin: 0;
     padding: 0;
 }
@@ -249,19 +255,39 @@ details p {
     align-items: center;
     margin: auto;
     overflow-x: hidden;
-    width: 100%;
-    padding-right: 0.75rem;
-    padding-left: 0.75rem;
+    padding: 1rem;
 }
 
-.box-shadow {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.w-fill, .w-100{
+    width: 100%;
+}
+
+.h-fill, .h-100{
+    height: 100%;
 }
 
 .flex-centered {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-space-between {
+    justify-content: space-between;
+}
+
+.flex-space-around {
+    justify-content: space-around;
+}
+
+.no-padding {
+    padding: 0;
+}
+.no-margin {
+    margin: 0;
 }
 
 .fill-width {
@@ -288,8 +314,10 @@ details p {
     justify-content: stretch;
 }
 
-.flex-column {
-    flex-direction: column;
+
+
+.box-shadow {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* navbar */
@@ -632,7 +660,7 @@ details p {
     }
 }
 
-@media(min-width: 1200px) {
+@media(min-width: 800px) {
     .navbar-nav {
         flex-direction: row;
     }
@@ -642,6 +670,16 @@ details p {
     .navbar-expand-xl .navbar-nav .nav-link {
         padding-right: .5rem;
         padding-left: .5rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    :root {
+        --main-max-width: 1320px;
+    }
+
+    .navbar .container {
+        max-width: 1320px;
     }
 }
 
