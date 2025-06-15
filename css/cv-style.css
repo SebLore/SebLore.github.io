@@ -24,6 +24,7 @@
     --theme-toggle-txt-color: #f0f0f0;
     --theme-toggle-hover-bg-color: #00CED1;
     --cover-letter-bg-color: #f0f0f0;
+    --print-bg-color: white;
 }
 
 html.light-mode {
@@ -47,6 +48,7 @@ html.light-mode {
     --theme-toggle-txt-color: #f0f0f0;
     --theme-toggle-highlight-bg-color: #00CED1;
     --cover-letter-bg-color: #f0f0f0;
+    --print-bg-color: white;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -71,7 +73,7 @@ html.light-mode {
         --theme-toggle-txt-color: black;
         --contact-item-link: #3498db;
         --cover-letter-bg-color: #444;
-
+        --print-bg-color: var(--body-bg-color);
     }
 }
 
@@ -98,7 +100,7 @@ html.dark-mode {
     --theme-toggle-highlight-bg-color: #00CED1;
     --theme-toggle-txt-color: #f0f0f0;
     --cover-letter-bg-color: #444;
-    transition: 0.5s;
+    --print-bg-color: var(--body-bg-color);
 }
 
 
@@ -658,9 +660,11 @@ a {
         height: 297mm;
     }
 
+
     .cv-container {
         box-shadow: none;
         border-radius: 0;
+        background-color: var(--print-bg-color);
     }
 
     .cv-header {
