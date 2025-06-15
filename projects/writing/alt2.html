@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Persistent Text Area</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2em;
+      background-color: #0E0E0E;
+      color: #b3b3b3;
+    }
+    textarea {
+      width: 100%;
+      height: 100vh;
+      font-size: 16px;
+      color: inherit;
+      background-color: #0F0F0F;
+      border: none;
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: 600;
+          }
+    textarea:focus {
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <h2>Your Notes</h2>
+  <textarea id="textInput" placeholder="..."></textarea>
+
+  <script>
+    const textArea = document.getElementById("textInput");
+
+    // Load saved text when the page loads
+    window.onload = () => {
+      const savedText = localStorage.getItem("myNotes");
+      if (savedText !== null) {
+        // add letter by letter
+        let index = 0;
+        const interval = setInterval(() => {
+          if (index < savedText.length) {
+            textArea.value += savedText[index];
+            index++;
+          } else {
+            clearInterval(interval);
+          }
+        }, 50); // Adjust the speed here
+      }
+    };
+
+    // Save text whenever it's changed
+    textArea.addEventListener("input", () => {
+      localStorage.setItem("myNotes", textArea.value);
+    });
+  </script>
+</body>
+</html>
