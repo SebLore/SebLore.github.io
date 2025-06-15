@@ -591,15 +591,21 @@ a {
 }
 
 .cover-letter-to{
-    font-size: 1.2rem;
     text-align: left;
 }
 .cover-letter-from{
     text-align: right;
 }
+.cover-letter-from h4{
+    text-align: left;
+}
 
 .cover-letter-container ul{
     list-style-type: none;
+}
+
+.cover-letter-container .cover-letter-to ul{
+    font-size: 1.2rem;
 }
 
 
