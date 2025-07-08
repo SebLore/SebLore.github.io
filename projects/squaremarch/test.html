@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebGL Marching Squares (SDF Smooth Min)</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        canvas {
+            display: block;
+            background-color: #2c2c2c;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .controls {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(44, 44, 44, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        label {
+            font-weight: 500;
+        }
+
+        input[type="range"] {
+            width: 150px;
+        }
+
+        .value-display {
+            font-weight: bold;
+            min-width: 40px;
+            text-align: center;
+            background-color: #333;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="glCanvas" width="800" height="600"></canvas>
+
+    <div class="controls">
+        <div class="control-group">
+            <label for="resolutionSlider">Resolution:</label>
+            <input type="range" id="resolutionSlider" min="8" max="64" value="16" step="8">
+            <span id="resolutionValue" class="value-display">80</span>
+        </div>
+        <div class="control-group">
+            <label for="blendSlider">Smoothness (k):</label>
+            <input type="range" id="blendSlider" min="0.01" max="0.8" step="0.01" value="0.3">
+            <span id="blendValue" class="value-display">0.30</span>
+        </div>
+    </div>
+
+    <script id="vertex-shader" type="x-shader/x-vertex">
+        // Vertex shader: Responsible for transforming vertex positions
+        attribute vec2 a_position;
+        uniform vec2 u_resolution;
+
+        void main() {
+            // Convert the position from pixels to 0.0 to 1.0
+            vec2 zeroToOne = a_position / u_resolution;
+            // Convert from 0->1 to 0->2
+            vec2 zeroToTwo = zeroToOne * 2.0;
+            // Convert from 0->2 to -1->+1 (clip space)
+            vec2 clipSpace = zeroToTwo - 1.0;
+            // Flip the y-axis because WebGL's clip space has Y up, but canvas has Y down
+            gl_Position = vec4(clipSpace * vec2(1, -1), 0, 1);
+        }
+    </script>
+
+    <script id="fragment-shader" type="x-shader/x-fragment">
+        // Fragment shader: Responsible for setting the color of each pixel
+        precision mediump float;
+
+        void main() {
+            // Set the color for the filled shape
+            gl_FragColor = vec4(0.0, 0.7, 0.8, 1.0);
+        }
+    </script>
+
+    <script>
+        /**
+         * WEBGL MARCHING SQUARES IMPLEMENTATION
+         * =====================================
+         * 
+         * This implementation uses the marching squares algorithm to render smooth
+         * metaballs using signed distance functions (SDF) and WebGL for hardware
+         * accelerated rendering.
+         * 
+         * The marching squares algorithm:
+         * 1. Divides the space into a grid of squares
+         * 2. Evaluates the implicit function at each corner of each square
+         * 3. Uses lookup tables to determine how to triangulate each square
+         * 4. Renders triangles using WebGL
+         */
+
+        // --- Main Application Entry Point ---
+        window.onload = function () {
+            // Get canvas and WebGL context
+            const canvas = document.getElementById('glCanvas');
+            const webglContext = canvas.getContext('webgl');
+            
+            if (!webglContext) {
+                console.error("WebGL not supported!");
+                return;
+            }
+
+            // ===================================================================
+            // WEBGL SHADER AND PROGRAM SETUP
+            // ===================================================================
+
+            /**
+             * Creates and compiles a WebGL shader from source code
+             * @param {WebGLRenderingContext} gl - The WebGL context
+             * @param {number} shaderType - gl.VERTEX_SHADER or gl.FRAGMENT_SHADER
+             * @param {string} shaderSource - The GLSL source code
+             * @returns {WebGLShader|null} Compiled shader or null on error
+             */
+            function createShader(gl, shaderType, shaderSource) {
+                const shader = gl.createShader(shaderType);
+                gl.shaderSource(shader, shaderSource);
+                gl.compileShader(shader);
+                
+                if (gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+                    return shader;
+                }
+                
+                console.error('Shader compilation error:', gl.getShaderInfoLog(shader));
+                gl.deleteShader(shader);
+                return null;
+            }
+
+            /**
+             * Creates a WebGL program by linking vertex and fragment shaders
+             * @param {WebGLRenderingContext} gl - The WebGL context
+             * @param {WebGLShader} vertexShader - Compiled vertex shader
+             * @param {WebGLShader} fragmentShader - Compiled fragment shader
+             * @returns {WebGLProgram|null} Linked program or null on error
+             */
+            function createShaderProgram(gl, vertexShader, fragmentShader) {
+                const shaderProgram = gl.createProgram();
+                gl.attachShader(shaderProgram, vertexShader);
+                gl.attachShader(shaderProgram, fragmentShader);
+                gl.linkProgram(shaderProgram);
+                
+                if (gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
+                    return shaderProgram;
+                }
+                
+                console.error('Program linking error:', gl.getProgramInfoLog(shaderProgram));
+                gl.deleteProgram(shaderProgram);
+                return null;
+            }
+
+            // Initialize shaders and WebGL program
+            const vertexShaderSource = document.getElementById('vertex-shader').text;
+            const fragmentShaderSource = document.getElementById('fragment-shader').text;
+            const vertexShader = createShader(webglContext, webglContext.VERTEX_SHADER, vertexShaderSource);
+            const fragmentShader = createShader(webglContext, webglContext.FRAGMENT_SHADER, fragmentShaderSource);
+
+            const shaderProgram = createShaderProgram(webglContext, vertexShader, fragmentShader);
+            const positionAttributeLocation = webglContext.getAttribLocation(shaderProgram, "a_position");
+            const resolutionUniformLocation = webglContext.getUniformLocation(shaderProgram, "u_resolution");
+            
+            // Create buffer for vertex positions
+            const vertexPositionBuffer = webglContext.createBuffer();
+            webglContext.bindBuffer(webglContext.ARRAY_BUFFER, vertexPositionBuffer);
+
+            // ===================================================================
+            // MARCHING SQUARES ALGORITHM AND SIGNED DISTANCE FUNCTIONS
+            // ===================================================================
+
+            // Grid resolution for marching squares (higher = more detail, lower performance)
+            let marchingSquaresResolution = 64;
+            
+            // Smoothness factor for metaball blending (higher = smoother transitions)
+            let metaballBlendSmoothness = 0.3;
+            
+            // Scalar field values at grid points (used by marching squares)
+            let scalarField = [];
+            
+            // Metaball objects with position, radius, and velocity
+            let animatedMetaballs = [
+                { 
+                    x: 0.3, y: 0.4, radius: 0.15, 
+                    velocityX: 0.005, velocityY: 0.003 
+                },
+                { 
+                    x: 0.7, y: 0.6, radius: 0.2, 
+                    velocityX: -0.002, velocityY: 0.004 
+                },
+                { 
+                    x: 0.5, y: 0.5, radius: 0.1, 
+                    velocityX: 0.003, velocityY: -0.005 
+                }
+            ];
+
+            /**
+             * Smooth minimum function for blending multiple SDFs
+             * Creates smooth transitions between multiple metaballs
+             * @param {number} distanceA - First distance value
+             * @param {number} distanceB - Second distance value
+             * @param {number} smoothness - Smoothness factor (k)
+             * @returns {number} Smoothly blended distance
+             */
+            function smoothMinimum(distanceA, distanceB, smoothness) {
+                const blendFactor = Math.max(0.0, Math.min(1.0, 0.5 + 0.5 * (distanceB - distanceA) / smoothness));
+                return distanceB * (1.0 - blendFactor) + distanceA * blendFactor - smoothness * blendFactor * (1.0 - blendFactor);
+            }
+
+            /**
+             * Evaluates the implicit function (SDF) at a given point
+             * Combines multiple metaballs using smooth minimum
+             * @param {number} x - X coordinate (0 to 1)
+             * @param {number} y - Y coordinate (0 to 1)
+             * @returns {number} Signed distance to the surface (negative = inside)
+             */
+            function evaluateImplicitFunction(x, y) {
+                // Calculate distance to each metaball
+                const metaballDistances = animatedMetaballs.map(metaball => {
+                    const deltaX = x - metaball.x;
+                    const deltaY = y - metaball.y;
+                    const distanceToCenter = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+                    return distanceToCenter - metaball.radius;
+                });
+
+                // Blend all metaballs using smooth minimum
+                let combinedDistance = metaballDistances[0];
+                for (let i = 1; i < metaballDistances.length; i++) {
+                    combinedDistance = smoothMinimum(combinedDistance, metaballDistances[i], metaballBlendSmoothness);
+                }
+                
+                return combinedDistance;
+            }
+
+            /**
+             * Linear interpolation for finding isosurface intersections
+             * Used to find exact points where the isosurface crosses grid edges
+             * @param {number} point1 - First coordinate
+             * @param {number} point2 - Second coordinate  
+             * @param {number} value1 - Field value at first point
+             * @param {number} value2 - Field value at second point
+             * @param {number} targetIsoValue - Target iso value
+             * @returns {number} Interpolated coordinate
+             */
+            function linearInterpolation(point1, point2, value1, value2, targetIsoValue) {
+                // Prevent division by zero for very similar values
+                if (Math.abs(value1 - value2) < 0.00001) {
+                    return (point1 + point2) / 2;
+                }
+                return point1 + (point2 - point1) * (targetIsoValue - value1) / (value2 - value1);
+            }
+
+            /**
+             * Updates the scalar field by evaluating the implicit function at each grid point
+             * This creates the data that the marching squares algorithm operates on
+             * @returns {Object} Grid dimensions { gridWidth, gridHeight }
+             */
+            function updateScalarField() {
+                const gridWidth = marchingSquaresResolution;
+                const gridHeight = Math.floor(marchingSquaresResolution * (canvas.height / canvas.width));
+                
+                // Allocate array for scalar field values
+                scalarField = new Array((gridWidth + 1) * (gridHeight + 1));
+
+                // Evaluate implicit function at each grid point
+                for (let rowIndex = 0; rowIndex <= gridHeight; rowIndex++) {
+                    for (let columnIndex = 0; columnIndex <= gridWidth; columnIndex++) {
+                        // Convert grid coordinates to normalized coordinates (0-1)
+                        const normalizedX = columnIndex / gridWidth;
+                        const normalizedY = rowIndex / gridHeight;
+                        
+                        // Store field value in linear array
+                        const linearIndex = rowIndex * (gridWidth + 1) + columnIndex;
+                        scalarField[linearIndex] = evaluateImplicitFunction(normalizedX, normalizedY);
+                    }
+                }
+                
+                return { gridWidth, gridHeight };
+            }
+
+            /**
+             * Updates metaball positions and handles boundary collisions
+             * Creates animated movement by updating positions based on velocity
+             */
+            function updateMetaballPositions() {
+                for (const metaball of animatedMetaballs) {
+                    // Update position based on velocity
+                    metaball.x += metaball.velocityX;
+                    metaball.y += metaball.velocityY;
+                    
+                    // Bounce off boundaries (accounting for metaball radius)
+                    if (metaball.x < metaball.radius || metaball.x > 1.0 - metaball.radius) {
+                        metaball.velocityX *= -1;
+                    }
+                    if (metaball.y < metaball.radius || metaball.y > 1.0 - metaball.radius) {
+                        metaball.velocityY *= -1;
+                    }
+                }
+            }
+
+            // ===================================================================
+            // MAIN RENDERING AND MARCHING SQUARES IMPLEMENTATION  
+            // ===================================================================
+
+            /**
+             * Main rendering loop - updates simulation and renders frame
+             * This function is called recursively using requestAnimationFrame
+             */
+            function renderFrame() {
+                // Update metaball positions for animation
+                updateMetaballPositions();
+                
+                // Recalculate scalar field with new metaball positions
+                const { gridWidth, gridHeight } = updateScalarField();
+
+                // Array to store triangle vertices for WebGL rendering
+                const triangleVertices = [];
+                
+                // Iso-value that defines the surface (0 = surface of metaballs)
+                const isoSurfaceValue = 0.0;
+
+                /**
+                 * Adds a triangle to the vertex array for rendering
+                 * Converts normalized coordinates to canvas pixel coordinates
+                 * @param {Object} vertex1 - First vertex {x, y}
+                 * @param {Object} vertex2 - Second vertex {x, y}  
+                 * @param {Object} vertex3 - Third vertex {x, y}
+                 */
+                function addTriangleToMesh(vertex1, vertex2, vertex3) {
+                    // Convert normalized coordinates (0-1) to canvas pixels
+                    triangleVertices.push(vertex1.x * canvas.width, vertex1.y * canvas.height);
+                    triangleVertices.push(vertex2.x * canvas.width, vertex2.y * canvas.height);
+                    triangleVertices.push(vertex3.x * canvas.width, vertex3.y * canvas.height);
+                }
+
+                // ===================================================================
+                // MARCHING SQUARES ALGORITHM - PROCESS EACH GRID CELL
+                // ===================================================================
+
+                for (let rowIndex = 0; rowIndex < gridHeight; rowIndex++) {
+                    for (let columnIndex = 0; columnIndex < gridWidth; columnIndex++) {
+                        // Calculate linear index for bottom-left corner of current cell
+                        const bottomLeftIndex = rowIndex * (gridWidth + 1) + columnIndex;
+
+                        // Get scalar field values at the four corners of the cell
+                        // Corner naming: C0=bottom-left, C1=bottom-right, C2=top-right, C3=top-left
+                        const cornerValue0 = scalarField[bottomLeftIndex];                    // Bottom-left
+                        const cornerValue1 = scalarField[bottomLeftIndex + 1];               // Bottom-right  
+                        const cornerValue2 = scalarField[bottomLeftIndex + gridWidth + 1 + 1]; // Top-right
+                        const cornerValue3 = scalarField[bottomLeftIndex + gridWidth + 1];   // Top-left
+
+                        // Determine marching squares case using bit flags
+                        // Each bit represents whether a corner is inside (< iso-value) or outside
+                        let marchingSquaresCase = 0;
+                        if (cornerValue0 < isoSurfaceValue) marchingSquaresCase |= 8; // Bit 3
+                        if (cornerValue1 < isoSurfaceValue) marchingSquaresCase |= 4; // Bit 2
+                        if (cornerValue2 < isoSurfaceValue) marchingSquaresCase |= 2; // Bit 1
+                        if (cornerValue3 < isoSurfaceValue) marchingSquaresCase |= 1; // Bit 0
+
+                        // Skip cells that are completely outside the surface (case 0)
+                        if (marchingSquaresCase === 0) continue;
+
+                        // Calculate normalized coordinates for cell corners
+                        const normalizedX0 = columnIndex / gridWidth;
+                        const normalizedY0 = rowIndex / gridHeight;
+                        const normalizedX1 = (columnIndex + 1) / gridWidth;
+                        const normalizedY1 = (rowIndex + 1) / gridHeight;
+
+                        // Define corner positions
+                        const corner0 = { x: normalizedX0, y: normalizedY0 }; // Bottom-left
+                        const corner1 = { x: normalizedX1, y: normalizedY0 }; // Bottom-right
+                        const corner2 = { x: normalizedX1, y: normalizedY1 }; // Top-right
+                        const corner3 = { x: normalizedX0, y: normalizedY1 }; // Top-left
+
+                        // Calculate edge intersection points using linear interpolation
+                        // These points represent where the iso-surface crosses cell edges
+                        const edgePoint0 = { 
+                            x: linearInterpolation(normalizedX0, normalizedX1, cornerValue0, cornerValue1, isoSurfaceValue), 
+                            y: normalizedY0 
+                        }; // Bottom edge
+                        const edgePoint1 = { 
+                            x: normalizedX1, 
+                            y: linearInterpolation(normalizedY0, normalizedY1, cornerValue1, cornerValue2, isoSurfaceValue) 
+                        }; // Right edge
+                        const edgePoint2 = { 
+                            x: linearInterpolation(normalizedX0, normalizedX1, cornerValue3, cornerValue2, isoSurfaceValue), 
+                            y: normalizedY1 
+                        }; // Top edge
+                        const edgePoint3 = { 
+                            x: normalizedX0, 
+                            y: linearInterpolation(normalizedY0, normalizedY1, cornerValue0, cornerValue3, isoSurfaceValue) 
+                        }; // Left edge
+
+                        // Calculate average field value for ambiguous cases (5 and 10)
+                        const averageFieldValue = (cornerValue0 + cornerValue1 + cornerValue2 + cornerValue3) * 0.25;
+                        const cellCenter = { x: (normalizedX0 + normalizedX1) / 2, y: (normalizedY0 + normalizedY1) / 2 };
+
+                        // ===================================================================
+                        // MARCHING SQUARES LOOKUP TABLE - TRIANGULATE BASED ON CASE
+                        // ===================================================================
+
+                        switch (marchingSquaresCase) {
+                            case 1: // Only top-left corner is inside
+                                addTriangleToMesh(edgePoint3, corner3, edgePoint2); 
+                                break;
+                                
+                            case 2: // Only top-right corner is inside
+                                addTriangleToMesh(edgePoint1, corner2, edgePoint2); 
+                                break;
+                                
+                            case 3: // Top-left and top-right corners are inside
+                                addTriangleToMesh(edgePoint3, corner3, corner2); 
+                                addTriangleToMesh(edgePoint3, corner2, edgePoint1); 
+                                break;
+                                
+                            case 4: // Only bottom-right corner is inside
+                                addTriangleToMesh(edgePoint0, corner1, edgePoint1); 
+                                break;
+                                
+                            case 5: // Bottom-right and top-left corners are inside (saddle case)
+                                if (averageFieldValue < isoSurfaceValue) {
+                                    // Two separate regions
+                                    addTriangleToMesh(edgePoint0, corner1, edgePoint1); 
+                                    addTriangleToMesh(edgePoint3, corner3, edgePoint2);
+                                } else {
+                                    // Connected through center
+                                    addTriangleToMesh(edgePoint0, corner1, cellCenter); 
+                                    addTriangleToMesh(corner1, edgePoint1, cellCenter);
+                                    addTriangleToMesh(edgePoint3, corner3, cellCenter); 
+                                    addTriangleToMesh(corner3, edgePoint2, cellCenter);
+                                }
+                                break;
+                                
+                            case 6: // Bottom-right and top-right corners are inside
+                                addTriangleToMesh(edgePoint0, corner1, corner2); 
+                                addTriangleToMesh(edgePoint0, corner2, edgePoint2); 
+                                break;
+                                
+                            case 7: // Bottom-right, top-right, and top-left corners are inside
+                                addTriangleToMesh(edgePoint0, corner1, corner2); 
+                                addTriangleToMesh(edgePoint0, corner2, corner3); 
+                                addTriangleToMesh(edgePoint0, corner3, edgePoint3); 
+                                break;
+                                
+                            case 8: // Only bottom-left corner is inside
+                                addTriangleToMesh(edgePoint0, edgePoint3, corner0); 
+                                break;
+                                
+                            case 9: // Bottom-left and top-left corners are inside
+                                addTriangleToMesh(edgePoint0, edgePoint2, corner0); 
+                                addTriangleToMesh(edgePoint2, corner3, corner0); 
+                                break;
+                                
+                            case 10: // Bottom-left and top-right corners are inside (saddle case)
+                                if (averageFieldValue < isoSurfaceValue) {
+                                    // Two separate regions
+                                    addTriangleToMesh(edgePoint0, edgePoint3, corner0); 
+                                    addTriangleToMesh(edgePoint1, corner2, edgePoint2);
+                                } else {
+                                    // Connected through center
+                                    addTriangleToMesh(edgePoint0, edgePoint3, cellCenter); 
+                                    addTriangleToMesh(edgePoint3, corner0, cellCenter);
+                                    addTriangleToMesh(edgePoint1, corner2, cellCenter); 
+                                    addTriangleToMesh(corner2, edgePoint2, cellCenter);
+                                }
+                                break;
+                                
+                            case 11: // Bottom-left, top-right, and top-left corners are inside
+                                addTriangleToMesh(edgePoint0, edgePoint1, corner0); 
+                                addTriangleToMesh(edgePoint1, corner2, corner0); 
+                                addTriangleToMesh(corner2, corner3, corner0); 
+                                break;
+                                
+                            case 12: // Bottom-left and bottom-right corners are inside
+                                addTriangleToMesh(edgePoint3, corner0, corner1); 
+                                addTriangleToMesh(edgePoint3, corner1, edgePoint1); 
+                                break;
+                                
+                            case 13: // Bottom-left, bottom-right, and top-left corners are inside
+                                addTriangleToMesh(edgePoint2, corner3, corner0); 
+                                addTriangleToMesh(edgePoint2, corner0, corner1); 
+                                addTriangleToMesh(edgePoint2, corner1, edgePoint1); 
+                                break;
+                                
+                            case 14: // Bottom-left, bottom-right, and top-right corners are inside
+                                addTriangleToMesh(edgePoint3, corner0, corner1); 
+                                addTriangleToMesh(edgePoint3, corner1, corner2); 
+                                addTriangleToMesh(edgePoint3, corner2, edgePoint2); 
+                                break;
+                                
+                            case 15: // All corners are inside - fill entire cell
+                                addTriangleToMesh(corner0, corner1, corner2);
+                                addTriangleToMesh(corner0, corner2, corner3);
+                                break;
+                        }
+                    }
+                }
+
+                // ===================================================================
+                // WEBGL RENDERING
+                // ===================================================================
+
+                // Set viewport and clear the canvas
+                webglContext.viewport(0, 0, webglContext.canvas.width, webglContext.canvas.height);
+                webglContext.clearColor(0.1, 0.1, 0.1, 1); // Dark gray background
+                webglContext.clear(webglContext.COLOR_BUFFER_BIT);
+
+                // Use shader program and set up vertex attributes
+                webglContext.useProgram(shaderProgram);
+                webglContext.enableVertexAttribArray(positionAttributeLocation);
+                webglContext.bindBuffer(webglContext.ARRAY_BUFFER, vertexPositionBuffer);
+                
+                // Upload triangle vertices to GPU
+                webglContext.bufferData(webglContext.ARRAY_BUFFER, new Float32Array(triangleVertices), webglContext.DYNAMIC_DRAW);
+
+                // Configure vertex attribute pointer and uniforms
+                webglContext.vertexAttribPointer(positionAttributeLocation, 2, webglContext.FLOAT, false, 0, 0);
+                webglContext.uniform2f(resolutionUniformLocation, webglContext.canvas.width, webglContext.canvas.height);
+                
+                // Draw all triangles
+                webglContext.drawArrays(webglContext.TRIANGLES, 0, triangleVertices.length / 2);
+
+                // Schedule next frame
+                requestAnimationFrame(renderFrame);
+            }
+
+            // ===================================================================
+            // USER INTERFACE SETUP AND EVENT HANDLERS
+            // ===================================================================
+
+            /**
+             * Sets up event listeners for UI controls to adjust algorithm parameters
+             */
+            function initializeUserInterface() {
+                // Resolution control slider
+                const resolutionSlider = document.getElementById('resolutionSlider');
+                const resolutionDisplayValue = document.getElementById('resolutionValue');
+                
+                resolutionSlider.addEventListener('input', (event) => {
+                    marchingSquaresResolution = parseInt(event.target.value);
+                    resolutionDisplayValue.textContent = marchingSquaresResolution;
+                });
+
+                // Smoothness control slider  
+                const smoothnessSlider = document.getElementById('blendSlider');
+                const smoothnessDisplayValue = document.getElementById('blendValue');
+                
+                smoothnessSlider.addEventListener('input', (event) => {
+                    metaballBlendSmoothness = parseFloat(event.target.value);
+                    smoothnessDisplayValue.textContent = metaballBlendSmoothness.toFixed(2);
+                });
+            }
+
+            /**
+             * Handles canvas resizing to maintain proper aspect ratio
+             * Updates canvas dimensions when window is resized
+             */
+            function handleCanvasResize() {
+                const displayWidth = canvas.clientWidth;
+                const displayHeight = canvas.clientHeight;
+                
+                // Only resize if dimensions have changed
+                if (canvas.width !== displayWidth || canvas.height !== displayHeight) {
+                    canvas.width = displayWidth;
+                    canvas.height = displayHeight;
+                }
+            }
+
+            // ===================================================================
+            // APPLICATION INITIALIZATION
+            // ===================================================================
+
+            // Set up UI event handlers
+            initializeUserInterface();
+            
+            // Set up window resize handler
+            window.addEventListener('resize', handleCanvasResize);
+            
+            // Perform initial canvas sizing
+            handleCanvasResize();
+            
+            // Start the rendering loop
+            requestAnimationFrame(renderFrame);
+        };
+    </script>
+</body>
+
+</html>
