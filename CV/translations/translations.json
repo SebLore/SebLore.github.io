@@ -1,0 +1,175 @@
+{
+  "print-header-text": {
+    "en": "My resume can be read in an alternative theme and/or in Swedish at seblore.github.io/CV",
+    "sv": "Mitt CV kan läsas med alternativt tema eller på engelska på seblore.github.io/CV"
+  },
+  "profile-name": {
+    "en": "Sebastian Lorensson",
+    "sv": "Sebastian Lorensson"
+  },
+  "profile-title": {
+    "en": "Aspiring Developer | Problem Solver | Team Player",
+    "sv": "Driven Utvecklare | Problemlösare | Lagarbetare"
+  },
+  "job-title": {
+    "en": "Junior Developer",
+    "sv": "Junior Developer"
+  },
+  "initial-info": {
+    "en": "Toggle theme and language with the buttons →",
+    "sv": "Växla tema och språk med knapparna →"
+  },
+  "toggle-theme-tooltip": {
+    "en": "Toggle Theme",
+    "sv": "Växla Tema"
+  },
+  "toggle-language-tooltip": {
+    "en": "Change Language",
+    "sv": "Byt Språk"
+  },
+  "summary-title": {
+    "en": "Summary",
+    "sv": "Sammanfattning"
+  },
+  "summary-text": {
+    "en": "Analytical, driven, diligent and joyful developer with an attention to detail and 3 years of study experience in programming, analysis and system development, as well as 5 years of work experience in a demanding professional role. Jovial and playful but still professional, is always looking to learn, improve, adapt and overcome.",
+    "sv": "Analytisk, driven, flitig och skojfrisk utvecklare med ett öga för detaljer och 3 års studieerfarenhet inom programmering, analys och systemutveckling, samt 5 års arbetslivserfarenhet inom en krävande yrkesroll. Skrattglad med glimten i ögat men alltid professionell, är alltid redo att lära mig, förbättra mig, anpassa mig och jobba för att slå oddsen."
+  },
+  "work-experience-title": {
+    "en": "Work Experience",
+    "sv": "Arbetslivserfarenhet"
+  },
+  "job1-title": {
+    "en": "Care assistant",
+    "sv": "Vårdbiträde"
+  },
+  "job1-company": {
+    "en": "Prima Hemtjänst Blekinge AB",
+    "sv": "Prima Hemtjänst Blekinge AB"
+  },
+  "job1-date": {
+    "en": "Jan 2019 — Aug 2024",
+    "sv": "jan 2019 — aug 2024"
+  },
+  "job1-desc": {
+    "en": [
+      "Had close contact with customers to ensure the best possible satisfaction and well-being",
+      "Was responsible for providing personal care and service interventions to customers",
+      "Helped with planning and executing activities to promote the customer's health and personal fulfillment",
+      "Documented and reported on the customer's health status and needs to the county nurse on regular basis"
+    ],
+    "sv": [
+      "Ansvarade för att utföra personlig omvårdnad och serviceinsatser hos kunder",
+      "Hade nära och personligt kontakt med kunderna för att försäkra bästa möjliga belåtenhet och mående",
+      "Hjälpte till med planering och utförande av aktiviteter för att främja kundens hälsa och personliga utveckling",
+      "Dokumenterade och rapporterade om kundens hälsotillstånd och behov till sjuksköterskan regelbundet"
+    ]
+  },
+  "education-title": {
+    "en": "Education",
+    "sv": "Utbildning"
+  },
+  "degree1-title": {
+    "en": "Master of Science in Computer Science, Specialization in Game Development",
+    "sv": "Civilingenjörsexamen i spel- och programvaruteknik"
+  },
+  "degree1-university": {
+    "en": "Blekinge Institute of Technology (BTH)",
+    "sv": "Blekinge Tekniska Högskola (BTH)"
+  },
+  "degree1-date": {
+    "en": "Aug 2016 — Jan 2019 // Sep 2024 — now",
+    "sv": "aug 2016 — jan 2019 // aug 2024 — nu"
+  },
+  "degree1-desc": {
+    "en": [
+      "Master's degree in Computer Science with a focus on 3D programming, integrated systems, and software optimization. Accepted with a SweSAT score of 1.7, which put me in the top 1% of all SAT test takers",
+      "Over the course of the first semester of 2024 I earned 40 credits, 33% more than a regular semester, and received a C or higher in all courses where higher grades were possible",
+      "My group achieved the highest possible score in a group assignment where I acted as project manager, through thorough planning and dedication"
+    ],
+    "sv": [
+      "Civilingenjörsexamen med fokus på 3D-programmering, integrerade system och programvaruoptimering",
+      "Blev antagen med ett högskolepoäng-resultat på 1.7, vilket var i de övre 99% av samtliga provtagande",
+      "Under första terminen tillbaka tjänade jag in 40 högskolepoäng, 33% mer än vad en termin innefattar, och fick C eller högre i samtliga kurser där högre betyg var möjligt",
+      "I ett grupparbete inom programvaruarkitektur där jag agerade projektledare fick vår grupp högsta möjliga betyg"
+    ]
+  },
+  "schoolstuff-title": {
+    "en": "Student organizational work",
+    "sv": "Styrelse- och studentorganisatoriskt arbete"
+  },
+  "schoolstuff-university": {
+    "en": "Blekinge Institute of Technology (BTH)",
+    "sv": "Blekinge Tekniska Högskola (BTH)"
+  },
+  "schoolstuff-date": {
+    "en": "Mar 2017 — Mar 2019",
+    "sv": "mar 2017 — mar 2019"
+  },
+  "schoolstuff-desc": {
+    "en": [
+      "Chairperson of the Blekinge Student Union (BSK)'s committee for introductory events and student activities for the period 2017-18",
+      "Chairman for the Blekinge Organized Game students (BOSS) branch of BSK for the mandate period 2017-2018"
+    ],
+    "sv": [
+      "Ledamot i Blekinge Studentkårs (BSK:s) utskott för introduktionsverksamhet under mandatperioden 2016-2017",
+      "Ordförande för BSK:s utskott Blekinge Organiserade Spelstudenter (BOSS) under mandatperioden 2017-2018"
+    ]
+  },
+  "section-skills": {
+    "en": "Skills",
+    "sv": "Färdigheter"
+  },
+  "programming-languages-title": {
+    "en": "Programming Languages",
+    "sv": "Programmeringsspråk"
+  },
+  "frameworks-title": {
+    "en": "Frameworks, DevOps & Libraries",
+    "sv": "Ramverk, DevOps & Bibliotek"
+  },
+  "other-skills-title": {
+    "en": "Other Skills",
+    "sv": "Övriga Färdigheter"
+  },
+  "other-skills1": {
+    "en": "Problem Solving",
+    "sv": "Problemlösning"
+  },
+  "other-skills2": {
+    "en": "Software Architecture",
+    "sv": "Mjukvaruarkitektur"
+  },
+  "other-skills3": {
+    "en": "Project Management",
+    "sv": "Projektledning"
+  },
+  "languages-title": {
+    "en": "Languages",
+    "sv": "Språk"
+  },
+  "languages-tooltip-text": {
+    "en": "1-5, 1 = basic, 2 = limited 3 = proficient 4 = fluent 5 = academic level",
+    "sv": "1-5, 1 = knappt, 2 = kan lite 3 = kan förstå 4 = flytande 5 = akademisk nivå"
+  },
+  "language1": {
+    "en": "Swedish",
+    "sv": "Svenska"
+  },
+  "language2": {
+    "en": "English",
+    "sv": "Engelska"
+  },
+  "language3": {
+    "en": "French",
+    "sv": "Franska"
+  },
+  "contact-title": {
+    "en": "Contact Information",
+    "sv": "Kontaktinformation"
+  },
+  "title-code-stuff": {
+    "en": "See My Code",
+    "sv": "Se Min Kod"
+  }
+}
