@@ -1,475 +1,123 @@
-/*
-*  Document
-*
-*   change from 'box-sizing: content-box' so  'width' is not affected by padding or border
-*/
+/* Basic reset and font styling for the entire page */
 
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-/*
-*   Root
-*
-*/
-
-:root {
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-    /*custom */
-    /* --main-font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
-
-    /* COLORS */
-    --main-bg-color: #f5f5f5;
-    --main-font-color: #333;
-    --main-high-light-color: #f0f0f0;
-    --main-font-color-light: #666;
-    --h1-color: #007bff;
-    --h1-color-light: #0056b3;
-    --h2-color: #007bff;
-    --h2-color-light: #0056b3;
-    --h3-color: #007bff;
-    --h3-color-light: #0056b3;
-
-
-    /* links */
-    --main-link-color: #007bff;
-    --main-link-hover-color: #0056b3;
-    --main-link-visited-color: #0056b3;
-    --main-link-visited-hover-color: #0056b3;
-
-    /* sizes */
-    --main-max-width: clamp(1200px, 100%, 1400px);
-    --main-font-size: 1.5rem;
-    --main-line-height: 1.7;
-    --main-font-weight: 400;
-
-}
-
-/* if user prefers dark mode */
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        /* background colors */
-        --main-bg-color: #333;
-
-        /* font colors */
-        --main-font-color: #f5f5f5;
-        --main-font-color-light: #ccc;
-        --main-high-light-color: #444;
-
-        /* link colors */
-        --main-link-color: #8e02ae;
-        --main-link-hover-color: color-mix(in srgb, var(--main-link-color) 70%, white);
-        --main-link-visited-color: color-mix(in srgb, var(--main-link-color) 70%, black);
-        --main-link-visited-color: #ac26ac;
-        --main-link-visited-hover-color: #db14db;
-
-        /* header colors */
-        --h1-color: #e810e8;
-        --h1-color-light: #ff00ff;
-        --h2-color: #e810e8;
-        --h2-color-light: #ff00ff;
-        --h3-color: #e810e8;
-        --h3-color-light: #ff00ff;
-
-    }
-}
-
-/* phone or tablet */
-@media (max-width: 768px) {
-    :root {
-        --main-max-width: 768px;
-    }
-}
-
-html {
-    /* box-sizing: border-box; */
-
+.left-panel,
+.right-panel {
+    flex: 2;
     height: 100%;
-    text-rendering: optimizeLegibility;
-    -moz-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-}
-
-*,
-::after,
-::before {
-    box-sizing: inherit;
-}
-
-body,
-textarea {
-    font-family: var(--main-font-family);
-    background-color: var(--main-bg-color);
-}
-
-button,
-input,
-select {
-    background-color: #666;
-}
-
-h1 {
-    font-size: 2.5rem;
-}
-
-/* established types and classes */
-body {
-    color: var(--main-font-color);
-    min-height: 100%;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    font-size: 1.5rem;
-    line-height: 1.7rem;
-    font-weight: 400;
-}
-
-a {
-    color: var(--main-link-color);
-    text-decoration: none;
-}
-
-a:hover {
-    color: var(--main-link-hover-color);
-}
-
-p {
-    font-size: 1rem;
-    margin: 0;
-    padding: 0;
-}
-
-dl,
-ol,
-ul {
-    margin-top: 0;
-    margin-bottom: 1rem;
-}
-
-span {
-    color: var(--main-font-color-light);
-    font-style: inherit;
-    font-weight: inherit;
-}
-
-button {
-    color: var(--main-font-color);
-    background-color: var(--main-bg-color);
-    border: 1px solid var(--main-font-color);
-    padding: 0.5em 1em;
+    width: 100%;
+    padding: 2rem;
+    text-align: left;
+    justify-content: center;
+    padding: 2rem;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.1);
     border-radius: 5px;
 }
 
-button:hover {
-    background-color: var(--main-high-light-color);
-}
-
-details {
-    position: relative;
-    background-color: var(--main-bg-color);
-    color: var(--main-font-color);
-    padding: 1em;
-    border: 2px solid var(--main-high-light-color);
-    border-radius: 10px;
-    box-shadow: 10px rgba(0, 0, 0, 0.1);
-}
-
-details:hover {
-    background-color: var(--main-high-light-color);
-}
-
-details[open] div {
-    position: absolute;
-    left: 0;
-    top: 100%;
+.middle-panel {
+    flex: 3;
+    height: 100%;
     width: 100%;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.no-y-scroll {
+    overflow-y: hidden;
+}
+
+.h100 {
+    height: 100% !important;
+}
+
+.mw100 {
+    max-width: 100% !important;
+}
+
+.panel h1,
+.panel h2 {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+    color: #333;
+    text-align: center;
+}
+
+.panel p {
+    font-size: 1rem;
+    color: #555;
+    text-align: center;
+    line-height: 1.5;
+}
+
+/* Styling for the canvas element itself */
+#main-canvas {
+    width: 100%;
+    height: 100%;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
 }
 
 
-details summary {
+.controls-panel{
+    padding: 1rem;
+    text-align: left;
+    justify-content: center;
+    padding: 2rem;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+.controls-panel button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-details p {
-    margin: 1rem;
-    font-size: 14px;
+
+
+.controls-panel input[type="number"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.1);
+    font-size: 1.5rem;
 }
 
-canvas {
-    display: flex;
-    flex: 2;
-    margin: 0 auto;
-    border: solid 8px rgb(128, 128, 128);
-    border-style: ridge;
-    width: 800;
-    height: 500;
-    /* max-width: 800px;
-    max-height: 500px; */
-}
-
-/* custom types and classes */
-
-.canvas-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1rem;
-    padding: 1rem;
-    width: 100%;
-    background-color: var(--main-bg-color);
-    color: var(--main-font-color);
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-.no-margin {
-    margin: 0;
-}
-
-.container .left,
-.container .right {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin: 1rem;
-    background-color: inherit;
-    text-align: left;
-}
-
-.container .middle {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+.controls-panel .grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
     margin-top: 1rem;
-    background-color: inherit;
 }
 
-.flex-justify-start {
-    display: flex;
-    justify-content: flex-start;
+#startButton {
+    background-color: #4CAF50;
+    color: white;
 }
 
-.flex-align-start {
-    display: flex;
-    align-items: flex-start;
+#pauseButton {
+    background-color: #c3c121;
+    color: rgb(0, 0, 0);
 }
 
-.flex-justify-center {
-    justify-content: center;
+#setBarCountButton {
+    background-color: #2196F3;
+    color: white;
 }
 
-
-.flex-centered {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-/* container for controls */
-.controls {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1rem;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+.container pre{
     width: 100%;
-    background-color: var(--main-bg-color);
-    color: var(--main-font-color);
-    border-radius: 5px;
-}
-
-.controls input[type=number] {
-    -webkit-appearance: textfield;
-    -moz-appearance: textfield;
-    appearance: textfield;
-    color: var(--main-font-color);
-    background-color: var(--main-bg-color);
-    border: 1px solid var(--main-font-color);
-    padding: 0.5em 1em;
-    /* border-radius: 5px; */
-    margin: 10px;
-    text-align: center;
-}
-
-.controls input[type=number]:hover {
-    background-color: var(--main-high-light-color);
-    width: fit-content;
-}
-
-.controls input[type=number]:focus {
-    background-color: var(--main-high-light-color);
-}
-
-.controls .slider {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-.controls .slider label {
     font-size: 1rem;
-    font-weight: bold;
-    align-self: center;
-}
-
-
-.textbox {
-    display: block;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    margin-top: 3rem;
-    padding: 1rem;
-    width: 60%;
-    background-color: #2a2a2a;
-    box-shadow: 0 10px 10px 0 rgba(0,   0, 0, 0.1);
-}
-
-.page{
-    flex-direction: row;
-}
-
-.sidebar {
-    background-color: var(--main-bg-color);
-    color: var(--main-font-color);
-    padding: 1rem;
-    margin: 1rem;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.sidebar h3 {
-    color: var(--h3-color);
-}
-
-.card {
-    background-color: var(--main-bg-color);
-    color: var(--main-font-color);
-    padding: 1rem;
-    margin: 1rem;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.card .content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-}
-
-.card img {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
-}
-
-/* information about each algorithm */
-.infocard {
-    background-color: var(--main-bg-color);
-    color: var(--main-font-color);
-    padding: 1rem;
-    margin: 1rem;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* media specific changes */
-/* @media screen and (max-width: 1600px) {
-    .navBar {
-        grid-template-columns: [start] 1fr [logo-end] 1fr [menu-start] 1fr [menu-end];
-    }
-
-    .tooltip .tooltiptext {
-        top: -100%;
-    }
-}
-
-@media (min-width: 1400px) {
-    .container {
-        max-width: 1320px;
-    }
-}
-
-@media screen and (max-height: 1000px) {
-    .navBar {
-        display: grid;
-    }
-} */
-
-@media (max-width: 768px) {
-    .container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .canvas-container{
-        margin: 0;
-        flex-direction: column;
-    }
-
-    .container .left,
-    .container .right {
-        margin: 0;
-    }
-    .container .left{
-        order: 3;
-    }
-
-    .container .middle {
-        margin-top: 0;
-    }
-
-    
-
-    .controls {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        width: 100%;
-    }
-
-    canvas {
-        width: 100%;
-        height: 100%;
-    }
-
-
-    .controls .slider {
-        width: 100%;
-    }
-
-    .textbox {
-        width: 100%;
-    }
-
-    .sidebar {
-        width: 100%;
-    }
-
-    .card {
-        width: 100%;
-    }
-
-    .infocard {
-        width: 100%;
-    }
-        
+    line-height: 1.5;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 1rem;;
 }
