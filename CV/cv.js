@@ -9,13 +9,14 @@ const toggleLanguageButton = document.getElementById("toggle-language");
 const toggleThemeButton = document.getElementById("toggle-theme");
 const info = document.getElementById("initial-info");
 const cv_container = document.getElementById("cv-container");
+const backbutton = document.getElementById("backbutton");
 
 
 // Load translations from the JSON file
 async function fetchTranslations() {
   console.log("Loading translations...");
   try {
-    const response = await fetch("./translations/translations.json");
+    const response = await fetch("/cv/translations/translations.json");
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }

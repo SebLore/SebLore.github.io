@@ -1,4 +1,8 @@
 {
+  "backbutton": {
+    "en": "← Go back",
+    "sv": "← Gå tillbaka"
+  },
   "print-header-text": {
     "en": "My resume can be read in an alternative theme and/or in Swedish at seblore.github.io/CV",
     "sv": "Mitt CV kan läsas med alternativt tema eller på engelska på seblore.github.io/CV"

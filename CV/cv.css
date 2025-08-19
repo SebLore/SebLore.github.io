@@ -156,10 +156,14 @@ a {
 .cv-header h1 {
     font-size: 2.5rem;
     margin-bottom: 10px;
+    font-weight: 400;
+    color: var(--header-txt-color);
+    text-transform: uppercase;
+    
 }
 
 #title-name {
-    letter-spacing: 0.05rem;
+    letter-spacing: -0.05rem;
 }
 
 .cv-header h2 {
@@ -176,6 +180,7 @@ a {
     display: block;
     object-fit: cover;
     transition: ease-in-out 0.5s;
+
     &:hover {
         scale: 1.05;
     }
@@ -521,9 +526,10 @@ a {
     color: #f0f0f0;
     display: flex;
     transition: ease-out 1.5s;
+    z-index: 1001;
 }
 
-.hidden{
+.hidden {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -561,8 +567,8 @@ a {
 
 /* For cover letter, switching it up a bit */
 
-.cover-letter-container{
-    display:flex;
+.cover-letter-container {
+    display: flex;
     flex-direction: column;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     page-break-inside: never;
@@ -576,17 +582,18 @@ a {
     border-radius: 5px;
     overflow: hidden;
 }
-#cover-letter-content{
+
+#cover-letter-content {
     margin: 1rem;
     align-self: center;
 }
 
-#cover-letter-content h4{
+#cover-letter-content h4 {
     font-weight: 600;
     font-size: 1.1rem;
 }
 
-.cover-letter-top{
+.cover-letter-top {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -594,22 +601,49 @@ a {
     margin-bottom: 3rem;
 }
 
-.cover-letter-to{
-    text-align: left;
-}
-.cover-letter-from{
-    text-align: right;
-}
-.cover-letter-from h4{
+.cover-letter-to {
     text-align: left;
 }
 
-.cover-letter-container ul{
+.cover-letter-from {
+    text-align: right;
+}
+
+.cover-letter-from h4 {
+    text-align: left;
+}
+
+.cover-letter-container ul {
     list-style-type: none;
 }
 
-.cover-letter-container .cover-letter-to ul{
+.cover-letter-container .cover-letter-to ul {
     font-size: 1.2rem;
+}
+
+#backbutton {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: var(--theme-toggle-bg-color);
+    color: var(--theme-toggle-txt-color);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    z-index: 1000;
+    width: 150px;
+
+    /* when hiding the button, make it fold up until width is 0*/
+    transition: height 0.3s ease-in-out;
+    overflow: hidden;
+
+    &:hover {
+        transition: background-color 0.5s;
+        background-color: var(--theme-toggle-highlight-bg-color);
+
+    }
 }
 
 
@@ -649,8 +683,8 @@ a {
         flex: 1 0 100%;
     }
 
-    #initial-info{
-        align-items:center;
+    #initial-info {
+        align-items: center;
         padding: 0px 10px;
     }
 }
@@ -670,7 +704,6 @@ a {
         height: 297mm;
     }
 
-
     .cv-container {
         box-shadow: none;
         border-radius: 0;
@@ -678,39 +711,40 @@ a {
     }
 
     .cv-header {
+        position: relative;
         background-image: none;
         min-height: 297mm;
         min-width: 210mm;
         page-break-after: always;
-        display:flex;
+        display: flex;
         justify-content: flex-start;
         align-items: center;
         flex-direction: column;
     }
 
-    .profile-img{
+    .profile-img {
         margin-top: 3rem;
         height: 400px;
         width: 400px;
     }
 
-    #profile-name{
+    #profile-name {
         font-size: 4rem;
     }
 
-    #profile-title{
+    #profile-title {
         font-size: 2rem;
     }
 
-    #misc{
+    #misc {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
     }
 
-    .contact-info{
+    .contact-info {
         font-size: 1rem;
-        flex-direction:row;
+        flex-direction: row;
     }
 
     .cv-section {
@@ -744,7 +778,7 @@ a {
         font-size: 1.2rem;
     }
 
-    #initial-info{
+    #initial-info {
         display: none;
     }
 
@@ -756,14 +790,13 @@ a {
     /* #section-skills{
         page-break-before: always;
     } */
-    
-    #school-stuff{
+
+    #school-stuff {
         page-break-inside: never;
     }
 
-    .cover-letter-container{
+    .cover-letter-container {
         box-shadow: none;
         padding: 3rem 2rem;
     }
 }
-

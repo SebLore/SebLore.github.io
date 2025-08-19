@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/rsc/images/me_nobg.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="cv.css">
+    <link rel="stylesheet" href="/cv/cv.css">
     <title>seblore | CV</title>
 </head>
 
@@ -15,10 +15,11 @@
         <!-- Header Section -->
         <header class="cv-header">
             <div id="initial-info" data-translate-key="initial-info"></div>
+            <button id="backbutton" data-translate-key="backbutton" aria-label="Go back" onclick="history.back()"></button>
             <div class="header-info" id="printout-info">
                 <div class="header-info-text" id="print-header-text">seblore.github.io/CV</div>
             </div>
-            <img src="./img/jaghej.png" alt="Profile Photo" class="profile-img">
+            <img src="./cv/img/jaghej.png" alt="Profile Photo" class="profile-img">
             <h1 data-translate-key="profile-name" id="title-name">Sebastian Lorensson</h1>
             <h2 data-translate-key="profile-title"></h2>
             <div class="toggles">
@@ -26,7 +27,8 @@
                     <span class="tooltip-text-left" id="toggle-theme-tooltip">filler</span>
                 </button>
                 <button id="toggle-language" type="button" class="toggle-button tooltip">
-                    <span class="tooltip-text-left" data-translate-key="toggle-language-tooltip" id="toggle-language-tooltip">filler</span>
+                    <span class="tooltip-text-left" data-translate-key="toggle-language-tooltip"
+                        id="toggle-language-tooltip">filler</span>
                 </button>
             </div>
         </header>
@@ -256,7 +258,7 @@
         </section>
     </div>
 
-    <script src="./cv.js"></script>
+    <script src="/cv/cv.js"></script>
 </body>
 
 </html>

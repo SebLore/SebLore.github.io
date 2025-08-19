@@ -56,6 +56,9 @@
     /* fonts */
     --menu-font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     --main-font-family: 'Libre Baskerville', sans-serif;
+
+    /* navbar */
+    --navbar-min-height: 3rem;
 }
 
 /* if user prefers dark mode */
@@ -84,7 +87,6 @@
         --h2-color-light: #ff00ff;
         --h3-color: #e810e8;
         --h3-color-light: #ff00ff;
-
     }
 }
 
@@ -133,7 +135,7 @@ h3 {
     color: var(--h3-color);
 }
 
-.h3{
+.h3 {
     border-bottom: 1px solid var(--h3-color);
     padding-bottom: 0.5rem;
 }
@@ -237,6 +239,8 @@ details p {
     text-align: center;
     margin: auto;
     padding: 0;
+    height: 100%;
+    width: 100%;
     background-color: var(--main-bg-color);
     color: var(--main-font-color);
     font-family: var(--main-font-family);
@@ -244,7 +248,17 @@ details p {
     line-height: var(--main-line-height);
     font-weight: var(--main-font-weight);
     overflow-x: hidden;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 1.0s ease-in-out;
+}
+
+.page-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin-top: var(--navbar-min-height); /* accounting for nav bar */
 }
 
 .container {
@@ -258,11 +272,13 @@ details p {
     padding: 1rem;
 }
 
-.w-fill, .w-100{
+.w-fill,
+.w-100 {
     width: 100%;
 }
 
-.h-fill, .h-100{
+.h-fill,
+.h-100 {
     height: 100%;
 }
 
@@ -271,6 +287,7 @@ details p {
     justify-content: center;
     align-items: center;
 }
+
 .flex-column {
     flex-direction: column;
 }
@@ -286,6 +303,7 @@ details p {
 .no-padding {
     padding: 0;
 }
+
 .no-margin {
     margin: 0;
 }
@@ -303,6 +321,15 @@ details p {
     height: 100%;
 }
 
+.pt-3 {
+    padding-top: 3rem !important;
+}
+
+.my-3 {
+    margin-top: 3rem !important;
+    margin-bottom: 3rem !important;
+}
+
 .fixed-top {
     position: fixed;
     top: 0;
@@ -314,21 +341,22 @@ details p {
     justify-content: stretch;
 }
 
-
-
 .box-shadow {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.hidden {
+    display: none;
 }
 
 /* navbar */
 .navbar {
     position: fixed;
     display: flex;
+    flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
-    justify-content: space-around;
-    flex-direction: row;
-    align-items: center;
+    justify-content: center;
     background: #12121b !important;
     color: white;
     font-family: inherit;
@@ -338,47 +366,84 @@ details p {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     line-height: 1rem;
     min-width: 100%;
+    max-width: var(--main-max-width);
+    padding: 0;
+    margin: 0;
 
-    transition: transform 0.3s ease-in-out;
-}
+    min-height: var(--navbar-min-height);
 
-.nav {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    list-style: none;
-}
-
-.navbar-nav {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    padding-left: 0;
-    margin-bottom: 0;
-    list-style: none;
+    transition: grow200 0.3s ease-in-out;
 }
 
 .navbar .container {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: space-around;
-    position: relative;
+    justify-content: space-evenly;
+    width: 100%;
+    max-width: var(--main-max-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+    overflow-y: hidden;
 }
 
 .navbar .logo-container {
     display: flex;
+    flex: 1;
     align-items: center;
-    font-size: 1rem;
+    justify-content: center;
 }
 
+.navbar .logo-container a {
+    display: inherit;
+}
 
-.navbar .logo-container h2 {
-    color: rgb(230, 230, 230);
+.navbar .logo-text {
+    align-content: center;
+    color: #f0f0f0;
 
     &:hover {
-        cursor: pointer;
-        color: white;
+        color: var(--main-link-hover-color);
     }
+}
+
+.navbar .nav-center {
+    display: flex;
+    flex: 2;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    letter-spacing: -0.05rem;
+}
+
+.navbar .nav-center ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    overflow: hidden;
+    
+    /* space between nav items */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar .externals-container {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar .externals-container ul {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .navbar a {
@@ -419,42 +484,23 @@ details p {
     }
 }
 
-.navbar .externals-container .block-externals {
-    margin: 0;
-    background-color: inherit;
-    min-width: 200px;
-    font-size: 2rem;
-}
+.navbar .externals-container a i {
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
 
-.block-externals .external {
-    padding: 0.5rem;
-    font-size: 2rem;
+    &:hover {
+        transform: scale(1.4);
+        transition: transform 0.2s ease-in-out;
+    }
 }
 
 .menuItems {
     z-index: 2;
-    /* grid-column-start: menu-start;
-    grid-column-end: menu-end;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr; */
-    /*! align-self: center; */
-    /*! justify-self: center; */
     align-content: center;
     justify-content: center;
     font-family: var(--menu-font-family);
     font-size: larger;
-}
-
-.menuItems>div {
-    padding-right: 1em;
-    z-index: 2;
-    opacity: 0.6;
-    justify-self: center;
-    align-self: center;
-    text-align: center;
-    font-family: var(--menu-font-family);
-    transition: font-family 0.2s;
-    transition: opacity 0.2s;
+    width: 100%;
 }
 
 .tooltip .tooltiptext {
@@ -477,14 +523,16 @@ details p {
 .textbox {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     text-align: justify;
     margin: auto;
-    /* padding: 1rem; */
-    max-width: 60%;
+    padding: 0.5rem 1rem;;
+    max-width: 75%;
+    height: 100%;
+    
+    background: rgba(0, 0, 0, 0.1);
 }
 
-.sidebar {
+/* .sidebar {
     background-color: var(--main-bg-color);
     color: var(--main-font-color);
     padding: 1rem;
@@ -496,7 +544,7 @@ details p {
 .sidebar h3 {
     color: var(--h3-color);
     display: inline;
-}
+} */
 
 .card {
     background-color: var(--main-bg-color);
@@ -525,14 +573,15 @@ details p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 2rem;
-    padding: 2rem;
-    max-width: 100%;
+    margin: 0;
+    padding: var(--navbar-min-height) 0;
     background-color: var(--main-bg-color);
     background-color: color-mix(in srgb, var(--main-bg-color), black 20%);
     color: var(--main-font-color);
     border-radius: 5px;
     box-shadow: 0 1rem 10px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    width: 100%;
 }
 
 .black-box {
@@ -570,20 +619,6 @@ details p {
     animation: slide 1s ease-in-out;
 }
 
-#loris {
-    align-self: center;
-}
-
-@keyframes slide {
-    0% {
-        width: 0;
-    }
-
-    100% {
-        width: 100%;
-    }
-
-}
 
 .about-section p {
     line-break: normal;
@@ -603,23 +638,15 @@ details p {
     justify-content: center;
     align-items: center;
     text-decoration: underline;
-
 }
 
 .centered-iframe {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin: 3rem auto;
     box-shadow: 0 0 20px bisque;
     max-width: 100%;
     align-self: center;
 }
-
-/* .about-section .textbox{
-
-} */
 
 .inline-code {
     border: 5px;
@@ -660,6 +687,7 @@ details p {
     }
 }
 
+
 @media(min-width: 800px) {
     .navbar-nav {
         flex-direction: row;
@@ -678,9 +706,6 @@ details p {
         --main-max-width: 1320px;
     }
 
-    .navbar .container {
-        max-width: 1320px;
-    }
 }
 
 /* media specific changes */
@@ -720,7 +745,7 @@ details p {
         overflow-x: scroll;
     }
 
-    .navbar{
+    .navbar {
         flex-wrap: wrap;
     }
 
@@ -752,9 +777,20 @@ details p {
     }
 
     .page {
+        display: flex;
         justify-content: flex-start;
         align-items: center;
-        max-width: 100%;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* This should be where everything that isn't universal (navbar, style) should go.*/
+    .page-content {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        margin-top: 3rem;
+        /* padding: var(--navbar-min-height); */
     }
 
     .about-section {
@@ -786,5 +822,31 @@ details p {
         position: absolute;
         bottom: 0;
         right: 0;
+    }
+}
+
+/* Animations */
+@keyframes slide {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
+
+}
+
+@keyframes grow200 {
+    0% {
+        transform: scale(1);
+    }
+    
+    10% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1.2);
     }
 }
