@@ -2,10 +2,13 @@
 .page-content h1{
     position: relative;
     font-size: 2.5rem;
-    margin-bottom: 3rem;
+    margin: 3rem auto;
     color: var(--main-font-color);
     text-transform: uppercase;
     letter-spacing: -0.05rem;
+
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .page-content h1::after{
@@ -16,7 +19,6 @@
     content: "";
     display: block;
     border-bottom: 2px solid var(--main-font-color);
-
 }
 
 .gallery{
@@ -31,6 +33,7 @@
     background: rgba(0,0,0,0.3);
     border-radius: 5px;
 }
+
 
 .project {
     position: relative;

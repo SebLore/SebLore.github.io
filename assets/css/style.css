@@ -90,12 +90,9 @@
     }
 }
 
-
-
 #menu-toggle {
     display: none;
 }
-
 
 html {
     height: 100%;
@@ -719,11 +716,11 @@ details p {
     }
 }
 
-@media (min-width: 1400px) {
+/* @media (min-width: 1400px) {
     .container {
         max-width: 1320px;
     }
-}
+} */
 
 @media screen and (max-height: 1000px) {
     .navBar {

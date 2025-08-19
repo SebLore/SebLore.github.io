@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>seblore | Code</title>
+    <link rel="icon" href="/assets/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="./bars/bars.css">
+</head>
+
+<body>
+    <div class="page">
+        <div class="page-content">
+            <div class="container h-100 no-y-scroll">
+                <div class="left-panel wrapper">
+                    <h3 id="sortAlgName">Bubble Sort</h3>
+                    <p>Bubble Sort is an easy sorting algorithm to understand, and is usually the first one taught in
+                        computer science courses. It works by repeatedly stepping through an array (a list of values
+                        like numbers), comparing adjacent
+                        elements and swapping them if they are in the wrong order. The pass through the list is repeated
+                        until no swaps are needed, which means the list is sorted.</p>
+                    </p>
+                    <div>
+
+                        <h3>Simple example</h3>
+                        <p>The following is a simple implementation of a bubbleSort function in JavaScript for an
+                            arbitrary array.</p>
+                        <div class="container">
+                            <pre><code>
+function bubbleSort(arr) {
+    let n = arr.length;
+    let swapped;
+    do {
+        swapped = false;
+        for (let i = 0; i < n - 1; i++) {
+            if (arr[i] > arr[i + 1]) {
+                // Swap arr[i] and arr[i + 1]
+                let temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+                swapped = true;
+            }
+        }
+        n--; // Reduce the range for the next pass
+    } while (swapped);
+    return arr;
+}
+</code></pre>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="middle-panel">
+                    <div class="canvas-container" id="canvas-container">
+                        <canvas id="glCanvas" width="640" height="480"></canvas>
+                    </div>
+                </div>
+                <div class="right-panel">
+                    <div class="controls-panel">
+                        <h2 id="sortControls" style="color: white; margin-bottom: 3rem;">Controls</h3>
+                            <div class="grid">
+                                <label style="text-align: center;">Speed</label> <input type="range" aria-label="speed"
+                                    min="300" max="500" value="400" id="speedControl">
+
+                                <button id="setBarCountButton">Set Bar Count</button>
+                                <input type="number" id="barCountInput" aria-label="nr of bars" value="50" min="10"
+                                    max="2000" step="10">
+                                <button id="startButton" onclick="sortAnim()">Start Sorting</button>
+                                <button id="shuffleButton">Shuffle Bars</button>
+                                <button id="pauseButton">Pause Sorting</button>
+                                <button id="resetButton">Reset</button>
+                            </div>
+                            <h4>Warning</h4>
+                            <p>Sorting will be very slow for certain computers above numbers of 200. This is because the
+                                time it takes to render, not the sorting itself.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+<footer>
+    <div class="container">
+        <div class="textbox" style="width: 50%;">
+            <p>This program is heavily inspired by the work of
+                <a href="https://panthema.net/about/">Timo Bingmann</a>, specifically the project <a
+                    href="https://panthema.net/2013/sound-of-sorting/">"The Sound of Sorting"</a></a>.
+                I wanted to do my own implementation, partially as practice in JavaScript, partially to have
+                something
+                to
+                put on my website.
+            </p>
+        </div>
+    </div>
+</footer>
+<!-- <script src="/assets/js/spinner.js"></script> -->
+<script src="/assets/js/navbar.js"></script>
+<script id="vertex-shader" type="x-shader/x-vertex" data-shader-path="./bars/glsl/vertexShader.glsl"></script>
+<script id="fragment-shader" type="x-shader/x-fragment" data-shader-path="./bars/glsl/fragmentShader.glsl"></script>
+<script type="text/javascript" src="./bars/utility.js" type=""></script>
+<script type="text/javascript" src="./bars/webgl-utilities.js"></script>
+<script type="text/javascript" src="./bars/main.js"></script>
+
+</html>

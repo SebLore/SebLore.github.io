@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   logoContainer.innerHTML = `
     <a class="logo" href="/">
-        <img src="./assets/img/logo.png" alt="Logo" style="max-width: 40px;">
+        <img src="/assets/img/logo.png" alt="Logo" style="max-width: 40px;">
         <span class="logo-text">seblore</span>
     </a>
   `;
