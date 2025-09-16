@@ -537,6 +537,31 @@ details p {
     background: rgba(0, 0, 0, 0.1);
 }
 
+.side-panel{
+    flex: 1;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.center-panel{
+    flex: 2;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.panel-body{
+    text-align: left;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.p-1e{
+    padding: 1em;
+}
+
+.control-panel{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
 /* .sidebar {
     background-color: var(--main-bg-color);
     color: var(--main-font-color);

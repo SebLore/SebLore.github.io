@@ -1,8 +1,54 @@
+import { BubbleSort } from "./algos.js";
+import { shuffle, generateStepArray } from "./utility.js"; 
+// newly imported utility module
+
+function SetupGL(canvas, logicalWidth, logicalHeight) {
+    const gl = canvas.getContext("webgl2");
+
+    function resizeCanvas() {
+        const dpr = window.devicePixelRatio || 1; // on 4k monitor is higher
+
+        // Keep aspect ratio, fit ~60% of screen width
+        const scale = Math.min(
+            (window.innerWidth * 0.6) / logicalWidth,
+            (window.innerHeight * 0.6) / logicalHeight
+        );
+
+        const displayWidth = Math.round(logicalWidth * scale);
+        const displayHeight = Math.round(logicalHeight * scale);
+
+        // CSS size (how big it looks on screen)
+        canvas.style.width = displayWidth + "px";
+        canvas.style.height = displayHeight + "px";
+
+        // Backing resolution for sharp rendering
+        canvas.width = displayWidth * dpr;
+        canvas.height = displayHeight * dpr;
+
+        // Update WebGL viewport to new resolution
+        gl.viewport(0, 0, canvas.width, canvas.height);
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    return gl;
+}
 
 document.addEventListener("DOMContentLoaded", () => {
 
     // WebGL context and program
-    var gl, program;
+    var program, gl;
+
+    const canvas = document.querySelector("canvas");
+    if (!canvas) {
+        console.error("No canvas found");
+    }
+    gl = SetupGL(canvas, 640, 480);
+    gl.clearColor(0.2, 0.4, 0.6, 1.0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+
+
     // animation parameters
     var sorting = false;
     var animSpeed = 500 - document.getElementById("speedControl").value;
@@ -73,7 +119,6 @@ document.addEventListener("DOMContentLoaded", () => {
         gl.useProgram(program);
         setUpAttributesAndBuffers();
         drawBars();  // Call drawBars only after the shaders are initialized
-
         // return program;
     }
 
@@ -180,7 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function drawBars() {
-        gl.clearColor(0.0, 0.0, 0.0, 1.0);
+        gl.clearColor(0.0, 0.0, 0.0, 0.5);
         gl.clear(gl.COLOR_BUFFER_BIT);
 
         const { vertices, colors, indices } = getBarVertices(bars, n, maxHeight);
@@ -211,46 +256,30 @@ document.addEventListener("DOMContentLoaded", () => {
         gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
     }
 
-    // Bubble Sort Animation
-    window.sortAnim = async function bubbleSort() {
-        console.log("Bubble Sort started");
-        let swapped;
-        sorting = true;
-        do {
-            swapped = false;
-            for (let i = 0; i < bars.length - 1; i++) {
-                // set the active bar to be a highlighted color
-                bars[i].color = activeBarColor; // magenta
-                if (bars[i].height > bars[i + 1].height) {
-                    [bars[i], bars[i + 1]] = [bars[i + 1], bars[i]];
-                    swapped = true;
-                    drawBars(gl);
-                    await new Promise(resolve => setTimeout(resolve, animSpeed)); // Animation delay
-                }
-                // reset the color at the end
-                bars[i].color = defaultBarColor; //
-                if (sorting == false)
-                    break;
-            }
-            bars[bars.length - 1].color = defaultBarColor; // reset the color at the end
-        } while (swapped && sorting);
-        // when finished, go through the array again and set all colors to magenta,
-        // sequentially, then reset them all to gray
-        for (let i = 0; i < bars.length; i++) {
-            bars[i].color = activeBarColor; // magenta
-            drawBars(gl);
-            await new Promise(resolve => setTimeout(resolve, animSpeed)); // Animation delay
+    async function animateSort(gl, bars, speed) {
+        const gen = BubbleSort(bars);
+
+        for (let step of gen) {
+            // step = a snapshot of bars (deep copy)
+            // Replace current bars state with yielded snapshot to ensure color/height updates
+            bars.splice(0, bars.length, ...step.map(b => ({ ...b })));
+            drawBars();
+            await new Promise(r => setTimeout(r, speed));
         }
 
-        drawBars(gl);
         console.log("Bubble Sort completed");
-    };
-    
-    gl = initializeWebGL("glCanvas");
-    if(!gl) {
-        console.error("WebGL not supported!");
-        return;
     }
+
+    // Bubble Sort Animation
+    window.sortAnim = async function() {
+        animateSort(gl, bars, animSpeed);
+    }; 
+    
+    // gl = initializeWebGL("glCanvas");
+    // if(!gl) {
+    //     console.error("WebGL not supported!");
+    //     return;
+    // }
 
     function main() {
 
@@ -303,7 +332,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        document.getElementById("stopButton").addEventListener("click", () => {
+        document.getElementById("pauseButton").addEventListener("click", () => {
             sorting = false;
         });
     }

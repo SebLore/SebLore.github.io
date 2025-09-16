@@ -84,3 +84,6 @@ function throttle(func, interval) {
         }
     };
 }
+
+// Named exports so these utilities can be imported as an ES module
+export { shuffle, getRandomInt, generateStepArray, debounce, throttle };

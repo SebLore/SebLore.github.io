@@ -7,28 +7,32 @@
     <title>seblore | Code</title>
     <link rel="icon" href="/assets/img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="./bars/bars.css">
+    <link rel="stylesheet" href="/assets/css/projects.css">
+    <link rel="stylesheet" href="/assets/css/sorts.css">
 </head>
 
 <body>
     <div class="page">
-        <div class="page-content">
-            <div class="container h-100 no-y-scroll">
-                <div class="left-panel wrapper">
+        <div class="page-content flex-align-start">
+            <div class="container h-100 no-y-scroll flex-align-start">
+                <div class="side-panel wrapper p-1e">
                     <h3 id="sortAlgName">Bubble Sort</h3>
-                    <p>Bubble Sort is an easy sorting algorithm to understand, and is usually the first one taught in
-                        computer science courses. It works by repeatedly stepping through an array (a list of values
-                        like numbers), comparing adjacent
-                        elements and swapping them if they are in the wrong order. The pass through the list is repeated
-                        until no swaps are needed, which means the list is sorted.</p>
-                    </p>
-                    <div>
+                    <div class="panel-body">
+                        <p>Bubble Sort is an easy sorting algorithm to understand, and is usually the first one taught in
+                            computer science courses. It works by repeatedly stepping through an array (a list of values
+                            like numbers), comparing adjacent
+                            elements and swapping them if they are in the wrong order. The pass through the list is repeated
+                            until no swaps are needed, which means the list is sorted.</p>
+                        </p>
+                        <div>
+                    </div>
 
                         <h3>Simple example</h3>
                         <p>The following is a simple implementation of a bubbleSort function in JavaScript for an
                             arbitrary array.</p>
                         <div class="container">
-                            <pre><code>
+                            <p>put some text here explaining how it works later</p>
+                            <!-- <pre><code>
 function bubbleSort(arr) {
     let n = arr.length;
     let swapped;
@@ -47,17 +51,17 @@ function bubbleSort(arr) {
     } while (swapped);
     return arr;
 }
-</code></pre>
+</code></pre> -->
                         </div>
                     </div>
                 </div>
-                <div class="middle-panel flex-column flex-start mt-3">
+                <div class="center-panel">
                     <h2>Sorting Algorithm Visualiser</h2>
                     <div class="canvas-container" id="canvas-container">
-                        <canvas id="glCanvas" width="640" height="480"></canvas>
+                        <canvas id="glCanvas"></canvas>
                     </div>
                 </div>
-                <div class="right-panel">
+                <div class="side-panel p-1e">
                     <div class="controls-panel">
                         <h2 id="sortControls" style="color: white; margin-bottom: 3rem;">Controls</h3>
                             <div class="grid">
@@ -97,12 +101,11 @@ function bubbleSort(arr) {
         </div>
     </div>
 </footer>
-<!-- <script src="/assets/js/spinner.js"></script> -->
+<script src="/assets/js/spinner.js"></script>
 <script src="/assets/js/navbar.js"></script>
-<script id="vertex-shader" type="x-shader/x-vertex" data-shader-path="./bars/glsl/vertexShader.glsl"></script>
-<script id="fragment-shader" type="x-shader/x-fragment" data-shader-path="./bars/glsl/fragmentShader.glsl"></script>
-<script type="text/javascript" src="./bars/utility.js" type=""></script>
-<script type="text/javascript" src="./bars/webgl-utilities.js"></script>
-<script type="text/javascript" src="./bars/main.js"></script>
+<script id="vertex-shader" type="x-shader/x-vertex" data-shader-path="/projects/sorts/glsl/vertexShader.glsl"></script>
+<script id="fragment-shader" type="x-shader/x-fragment" data-shader-path="/projects/sorts/glsl/fragmentShader.glsl"></script>
+<script type="text/javascript" src="/projects/sorts/webgl-utilities.js"></script>
+<script type="module" src="/projects/sorts/main.js"></script>
 
 </html>
